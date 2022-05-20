@@ -1,0 +1,244 @@
+@prefix aas: <https://admin-shell.io/aas/3/0/RC01/> .
+@prefix aasaas: <https://admin-shell.io/aas/3/0/RC01/AssetAdministrationShell/> .
+@prefix aaskey: <https://admin-shell.io/aas/3/0/RC01/Key/> .
+@prefix aaskeyt: <https://admin-shell.io/aas/3/0/RC01/KeyType/> .
+@prefix aaskind: <https://admin-shell.io/aas/3/0/RC01/HasKind/> .
+@prefix aasmod: <https://admin-shell.io/aas/3/0/RC01/ModelingKind/> .
+@prefix aasprop: <https://admin-shell.io/aas/3/0/RC01/Property/> .
+@prefix aasref: <https://admin-shell.io/aas/3/0/RC01/Reference/> .
+@prefix aasrefer: <https://admin-shell.io/aas/3/0/RC01/Referable/> .
+@prefix aassem: <https://admin-shell.io/aas/3/0/RC01/HasSemantics/> .
+@prefix aassm: <https://admin-shell.io/aas/3/0/RC01/Submodel/> .
+@prefix aassmc: <https://admin-shell.io/aas/3/0/RC01/SubmodelElementCollection/> .
+@prefix ex: <http://example.org/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://mas4ai.eu/id/aas/9c10ad39-7e3d-43bc-a1c4-41d8bcf02711> a aas:AssetAdministrationShell ;
+    prov:wasDerivedFrom ex:ServoDCMotorShape ;
+    aasaas:submodel <http://mas4ai.eu/id/sm/32aa4745-a444-4c9a-b794-ea1a80d498f3>,
+        <http://mas4ai.eu/id/sm/4278ea99-9f88-46b8-b4ec-64c8694cbe62>,
+        <http://mas4ai.eu/id/sm/875ea745-d1eb-43ec-8c8b-149d5d462b6e>,
+        <http://mas4ai.eu/id/sm/bafd2747-2f64-4bd3-989c-4f44c3f0cbd7> ;
+    aaskind:kind aasmod:TEMPLATE ;
+    aassem:semanticId [ a aas:Reference ;
+            aasref:key [ a aas:Key ;
+                    aaskey:idType aaskeyt:IRI ;
+                    aaskey:value ex:ServoDCMotor ] ] ;
+    aasrefer:idShort "Servo DC Motor"^^xsd:string .
+
+<http://mas4ai.eu/id/property/14d7912e-9e7c-4716-bf1e-21ed83f7b083> a aas:Property ;
+    prov:wasDerivedFrom ex:DocumentIdShape ;
+    aaskind:kind aasmod:TEMPLATE ;
+    aassem:semanticId [ a aas:Reference ;
+            aasref:key [ a aas:Key ;
+                    aaskey:idType aaskeyt:IRI ;
+                    aaskey:value <file:///C:/Users/s158699/OneDrive%20-%20Semaku%20BV/Research/EU%20projects/MAS4AI/RDF%20-%20AAS%20conversion/examples/www.vdi2770.com/blatt1/Entwurf/Okt18/cd/DocumentId/Val> ] ] ;
+    aasprop:valueType xsd:string ;
+    aasrefer:idShort "DocumentId"^^xsd:string .
+
+<http://mas4ai.eu/id/property/1593d4ac-9236-4181-ab91-7d59fd81a07d> a aas:Property ;
+    prov:wasDerivedFrom ex:SerialNumberPropertyShape ;
+    aaskind:kind aasmod:TEMPLATE ;
+    aassem:semanticId [ a aas:Reference ;
+            aasref:key [ a aas:Key ;
+                    aaskey:idType aaskeyt:IRI ;
+                    aaskey:value ex:serialNumber ] ] ;
+    aasprop:valueType xsd:string ;
+    aasrefer:idShort "SerialNumber"^^xsd:string .
+
+<http://mas4ai.eu/id/property/253f91cc-051a-4eac-baeb-27470e2c32d0> a aas:Property ;
+    prov:wasDerivedFrom ex:GLNPropertyShape ;
+    aaskind:kind aasmod:TEMPLATE ;
+    aassem:semanticId [ a aas:Reference ;
+            aasref:key [ a aas:Key ;
+                    aaskey:idType aaskeyt:IRI ;
+                    aaskey:value ex:gln ] ] ;
+    aasprop:valueType xsd:integer ;
+    aasrefer:idShort "GLN"^^xsd:string .
+
+<http://mas4ai.eu/id/property/2ce6cf79-8cf2-4322-b780-a89cc6c18deb> a aas:Property ;
+    prov:wasDerivedFrom ex:DocumentClassificationSystemShape ;
+    aaskind:kind aasmod:TEMPLATE ;
+    aassem:semanticId [ a aas:Reference ;
+            aasref:key [ a aas:Key ;
+                    aaskey:idType aaskeyt:IRI ;
+                    aaskey:value <file:///C:/Users/s158699/OneDrive%20-%20Semaku%20BV/Research/EU%20projects/MAS4AI/RDF%20-%20AAS%20conversion/examples/www.vdi2770.com/blatt1/Entwurf/Okt18/cd/DocumentClassification/ClassificationSystem> ] ] ;
+    aasprop:valueType xsd:string ;
+    aasrefer:idShort "DocumentClassificationSystem"^^xsd:string .
+
+<http://mas4ai.eu/id/property/321727d4-27bf-4888-8135-01fed09e7c12> a aas:Property ;
+    prov:wasDerivedFrom ex:OrganizationOfficialNameShape ;
+    aaskind:kind aasmod:TEMPLATE ;
+    aassem:semanticId [ a aas:Reference ;
+            aasref:key [ a aas:Key ;
+                    aaskey:idType aaskeyt:IRI ;
+                    aaskey:value <file:///C:/Users/s158699/OneDrive%20-%20Semaku%20BV/Research/EU%20projects/MAS4AI/RDF%20-%20AAS%20conversion/examples/www.vdi2770.com/blatt1/Entwurf/Okt18/cd/Organization/OrganizationOfficialName> ] ] ;
+    aasprop:valueType xsd:string ;
+    aasrefer:idShort "OrganizationOfficialName"^^xsd:string .
+
+<http://mas4ai.eu/id/property/3a1c05d6-880f-4f79-87f1-36d2ec4bfc75> a aas:Property ;
+    prov:wasDerivedFrom ex:ManufacturerPropertyShape ;
+    aaskind:kind aasmod:TEMPLATE ;
+    aassem:semanticId [ a aas:Reference ;
+            aasref:key [ a aas:Key ;
+                    aaskey:idType aaskeyt:IRI ;
+                    aaskey:value ex:manufacturer ] ] ;
+    aasprop:valueType xsd:string ;
+    aasrefer:idShort "Manufacturer"^^xsd:string .
+
+<http://mas4ai.eu/id/property/3d31efa0-30f6-44ef-a6e5-3910c042436c> a aas:Property ;
+    prov:wasDerivedFrom ex:LanguageShape ;
+    aaskind:kind aasmod:TEMPLATE ;
+    aassem:semanticId [ a aas:Reference ;
+            aasref:key [ a aas:Key ;
+                    aaskey:idType aaskeyt:IRI ;
+                    aaskey:value <file:///C:/Users/s158699/OneDrive%20-%20Semaku%20BV/Research/EU%20projects/MAS4AI/RDF%20-%20AAS%20conversion/examples/www.vdi2770.com/blatt1/Entwurf/Okt18/cd/DocumentVersion/Language> ] ] ;
+    aasprop:valueType xsd:string ;
+    aasrefer:idShort "Language"^^xsd:string .
+
+<http://mas4ai.eu/id/property/4ac5aa53-afc5-41f9-acd2-04e9c63fc25f> a aas:Property ;
+    prov:wasDerivedFrom ex:CoolingTypePropertyShape ;
+    aaskind:kind aasmod:TEMPLATE ;
+    aassem:semanticId [ a aas:Reference ;
+            aasref:key [ a aas:Key ;
+                    aaskey:idType aaskeyt:IRI ;
+                    aaskey:value ex:coolingType ] ] ;
+    aasprop:valueType xsd:string ;
+    aasrefer:description "open circuit, external cooling"@en ;
+    aasrefer:idShort "CoolingType"^^xsd:string .
+
+<http://mas4ai.eu/id/property/772cb28b-4179-4432-883c-4f77fd748be5> a aas:Property ;
+    prov:wasDerivedFrom ex:TorquePropertyShape ;
+    aaskind:kind aasmod:TEMPLATE ;
+    aassem:semanticId [ a aas:Reference ;
+            aasref:key [ a aas:Key ;
+                    aaskey:idType aaskeyt:IRI ;
+                    aaskey:value ex:torque ] ] ;
+    aasprop:valueType xsd:float ;
+    aasrefer:idShort "Torque"^^xsd:string .
+
+<http://mas4ai.eu/id/property/79f03bb9-4abb-4fb4-9de4-2c6e9a5af0cb> a aas:Property ;
+    prov:wasDerivedFrom ex:TitleShape ;
+    aaskind:kind aasmod:TEMPLATE ;
+    aassem:semanticId [ a aas:Reference ;
+            aasref:key [ a aas:Key ;
+                    aaskey:idType aaskeyt:IRI ;
+                    aaskey:value <file:///C:/Users/s158699/OneDrive%20-%20Semaku%20BV/Research/EU%20projects/MAS4AI/RDF%20-%20AAS%20conversion/examples/www.vdi2770.com/blatt1/Entwurf/Okt18/cd/Description/Title> ] ] ;
+    aasprop:valueType rdf:langString ;
+    aasrefer:idShort "Title"^^xsd:string .
+
+<http://mas4ai.eu/id/property/873389e3-ee63-4bef-8d6e-89b19d7ee27b> a aas:Property ;
+    prov:wasDerivedFrom ex:DocumentClassNameShape ;
+    aaskind:kind aasmod:TEMPLATE ;
+    aassem:semanticId [ a aas:Reference ;
+            aasref:key [ a aas:Key ;
+                    aaskey:idType aaskeyt:IRI ;
+                    aaskey:value <file:///C:/Users/s158699/OneDrive%20-%20Semaku%20BV/Research/EU%20projects/MAS4AI/RDF%20-%20AAS%20conversion/examples/www.vdi2770.com/blatt1/Entwurf/Okt18/cd/DocumentClassification/ClassName> ] ] ;
+    aasprop:valueType rdf:langString ;
+    aasrefer:idShort "DocumentClassName"^^xsd:string .
+
+<http://mas4ai.eu/id/property/8e0f73a4-5a42-4a28-a6c0-95ee7d9062e5> a aas:Property ;
+    prov:wasDerivedFrom ex:OrganizationNameShape ;
+    aaskind:kind aasmod:TEMPLATE ;
+    aassem:semanticId [ a aas:Reference ;
+            aasref:key [ a aas:Key ;
+                    aaskey:idType aaskeyt:IRI ;
+                    aaskey:value <file:///C:/Users/s158699/OneDrive%20-%20Semaku%20BV/Research/EU%20projects/MAS4AI/RDF%20-%20AAS%20conversion/examples/www.vdi2770.com/blatt1/Entwurf/Okt18/cd/Organization/OrganizationName> ] ] ;
+    aasprop:valueType xsd:string ;
+    aasrefer:idShort "OrganizationName"^^xsd:string .
+
+<http://mas4ai.eu/id/property/9586afcc-281c-4ed2-b91c-9eca1b358174> a aas:Property ;
+    prov:wasDerivedFrom ex:RotationSpeedPropertyShape ;
+    aaskind:kind aasmod:TEMPLATE ;
+    aassem:semanticId [ a aas:Reference ;
+            aasref:key [ a aas:Key ;
+                    aaskey:idType aaskeyt:IRI ;
+                    aaskey:value ex:rotationSpeed ] ] ;
+    aasprop:valueType xsd:integer ;
+    aasrefer:idShort "RotationSpeed"^^xsd:string .
+
+<http://mas4ai.eu/id/property/c532a0d6-8bd6-4b03-a45e-0ae6092081c3> a aas:Property ;
+    prov:wasDerivedFrom ex:DocumentClassIdShape ;
+    aaskind:kind aasmod:TEMPLATE ;
+    aassem:semanticId [ a aas:Reference ;
+            aasref:key [ a aas:Key ;
+                    aaskey:idType aaskeyt:IRI ;
+                    aaskey:value <file:///C:/Users/s158699/OneDrive%20-%20Semaku%20BV/Research/EU%20projects/MAS4AI/RDF%20-%20AAS%20conversion/examples/www.vdi2770.com/blatt1/Entwurf/Okt18/cd/DocumentClassification/ClassId> ] ] ;
+    aasprop:valueType xsd:string ;
+    aasrefer:idShort "DocumentClassId"^^xsd:string .
+
+<http://mas4ai.eu/id/property/cfafe3ce-8007-4da8-a62d-059f37547bc2> a aas:Property ;
+    prov:wasDerivedFrom ex:MaxTorquePropertyShape ;
+    aaskind:kind aasmod:TEMPLATE ;
+    aassem:semanticId [ a aas:Reference ;
+            aasref:key [ a aas:Key ;
+                    aaskey:idType aaskeyt:IRI ;
+                    aaskey:value ex:maxTorque ] ] ;
+    aasprop:valueType xsd:float ;
+    aasrefer:idShort "MaxTorque"^^xsd:string .
+
+<http://mas4ai.eu/id/property/dcae1c1f-19b8-4c28-acef-a9787b8fdf39> a aas:Property ;
+    prov:wasDerivedFrom ex:MaxRotationSpeedPropertyShape ;
+    aaskind:kind aasmod:TEMPLATE ;
+    aassem:semanticId [ a aas:Reference ;
+            aasref:key [ a aas:Key ;
+                    aaskey:idType aaskeyt:IRI ;
+                    aaskey:value ex:maxRotationSpeed ] ] ;
+    aasprop:valueType xsd:integer ;
+    aasrefer:idShort "MaxRotationSpeed"^^xsd:string .
+
+<http://mas4ai.eu/id/property/ef7df676-664d-4434-90c5-c5d8b059e256> a aas:Property ;
+    prov:wasDerivedFrom ex:ProductDesignationPropertyShape ;
+    aaskind:kind aasmod:TEMPLATE ;
+    aassem:semanticId [ a aas:Reference ;
+            aasref:key [ a aas:Key ;
+                    aaskey:idType aaskeyt:IRI ;
+                    aaskey:value ex:productDesignation ] ] ;
+    aasprop:valueType rdf:langString ;
+    aasrefer:idShort "ProductDesignation"^^xsd:string .
+
+<http://mas4ai.eu/id/sm/32aa4745-a444-4c9a-b794-ea1a80d498f3> a aas:Submodel ;
+    prov:wasDerivedFrom ex:IdentificationGroup ;
+    aaskind:kind aasmod:TEMPLATE ;
+    aasrefer:idShort "Identification" ;
+    aassm:submodelElement <http://mas4ai.eu/id/property/1593d4ac-9236-4181-ab91-7d59fd81a07d>,
+        <http://mas4ai.eu/id/property/253f91cc-051a-4eac-baeb-27470e2c32d0>,
+        <http://mas4ai.eu/id/property/3a1c05d6-880f-4f79-87f1-36d2ec4bfc75>,
+        <http://mas4ai.eu/id/property/ef7df676-664d-4434-90c5-c5d8b059e256> .
+
+<http://mas4ai.eu/id/sm/4278ea99-9f88-46b8-b4ec-64c8694cbe62> a aas:Submodel ;
+    prov:wasDerivedFrom ex:OperationalDataGroup ;
+    aaskind:kind aasmod:TEMPLATE ;
+    aasrefer:idShort "OperationalData" ;
+    aassm:submodelElement <http://mas4ai.eu/id/property/772cb28b-4179-4432-883c-4f77fd748be5>,
+        <http://mas4ai.eu/id/property/9586afcc-281c-4ed2-b91c-9eca1b358174> .
+
+<http://mas4ai.eu/id/sm/875ea745-d1eb-43ec-8c8b-149d5d462b6e> a aas:Submodel ;
+    prov:wasDerivedFrom ex:DocumentationGroup ;
+    aaskind:kind aasmod:TEMPLATE ;
+    aasrefer:idShort "Documentation" ;
+    aassm:submodelElement <http://mas4ai.eu/id/smc/ef7fd1d9-3048-4292-8f71-0524836e070d> .
+
+<http://mas4ai.eu/id/sm/bafd2747-2f64-4bd3-989c-4f44c3f0cbd7> a aas:Submodel ;
+    prov:wasDerivedFrom ex:TechnicalDataGroup ;
+    aaskind:kind aasmod:TEMPLATE ;
+    aasrefer:idShort "TechnicalData" ;
+    aassm:submodelElement <http://mas4ai.eu/id/property/4ac5aa53-afc5-41f9-acd2-04e9c63fc25f>,
+        <http://mas4ai.eu/id/property/cfafe3ce-8007-4da8-a62d-059f37547bc2>,
+        <http://mas4ai.eu/id/property/dcae1c1f-19b8-4c28-acef-a9787b8fdf39> .
+
+<http://mas4ai.eu/id/smc/ef7fd1d9-3048-4292-8f71-0524836e070d> a aas:SubmodelElementCollection ;
+    prov:wasDerivedFrom ex:OperatingManualShape ;
+    aaskind:kind aasmod:TEMPLATE ;
+    aasrefer:idShort "OperatingManual"^^xsd:string ;
+    aassmc:value <http://mas4ai.eu/id/property/14d7912e-9e7c-4716-bf1e-21ed83f7b083>,
+        <http://mas4ai.eu/id/property/2ce6cf79-8cf2-4322-b780-a89cc6c18deb>,
+        <http://mas4ai.eu/id/property/321727d4-27bf-4888-8135-01fed09e7c12>,
+        <http://mas4ai.eu/id/property/3d31efa0-30f6-44ef-a6e5-3910c042436c>,
+        <http://mas4ai.eu/id/property/79f03bb9-4abb-4fb4-9de4-2c6e9a5af0cb>,
+        <http://mas4ai.eu/id/property/873389e3-ee63-4bef-8d6e-89b19d7ee27b>,
+        <http://mas4ai.eu/id/property/8e0f73a4-5a42-4a28-a6c0-95ee7d9062e5>,
+        <http://mas4ai.eu/id/property/c532a0d6-8bd6-4b03-a45e-0ae6092081c3> .
+
