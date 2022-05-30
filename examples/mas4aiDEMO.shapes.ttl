@@ -1,0 +1,109 @@
+# baseURI: http://www.tno.nl/mas4aiDEMO.shapes
+# imports: http://datashapes.org/dash
+# imports: http://www.tno.nl/mas4aiDEMO
+
+@prefix dash: <http://datashapes.org/dash#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix mas4aiDEMO: <http://www.tno.nl/mas4aiDEMO#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+mas4aiDEMO:Joint
+  a sh:NodeShape ;
+  sh:property mas4aiDEMO:Joint-hasMaxSpeed ;
+  sh:property mas4aiDEMO:Joint-hasRange ;
+.
+mas4aiDEMO:Joint-hasMaxSpeed
+  a sh:PropertyShape ;
+  sh:path mas4aiDEMO:hasMaxSpeed ;
+  sh:datatype xsd:decimal ;
+  sh:maxCount 1 ;
+.
+mas4aiDEMO:Joint-hasRange
+  a sh:PropertyShape ;
+  sh:path mas4aiDEMO:hasRange ;
+  sh:datatype xsd:decimal ;
+  sh:maxCount 1 ;
+.
+mas4aiDEMO:ManufacturingResource
+  a sh:NodeShape ;
+  sh:property mas4aiDEMO:ManufacturingResource-hasWeight ;
+.
+mas4aiDEMO:ManufacturingResource-hasWeight
+  a sh:PropertyShape ;
+  sh:path mas4aiDEMO:hasWeight ;
+  sh:datatype xsd:integer ;
+  sh:maxCount 1 ;
+.
+mas4aiDEMO:RoboticArm
+  a sh:NodeShape ;
+  sh:property mas4aiDEMO:RoboticArm-ControlledBy ;
+  sh:property mas4aiDEMO:RoboticArm-hasDepth ;
+  sh:property mas4aiDEMO:RoboticArm-hasHeight ;
+  sh:property mas4aiDEMO:RoboticArm-hasJoint ;
+  sh:property mas4aiDEMO:RoboticArm-hasWidth ;
+  sh:property mas4aiDEMO:RoboticArm-usesTool ;
+.
+mas4aiDEMO:RoboticArm-ControlledBy
+  a sh:PropertyShape ;
+  sh:path mas4aiDEMO:ControlledBy ;
+  sh:class mas4aiDEMO:Software ;
+  sh:maxCount 1 ;
+.
+mas4aiDEMO:RoboticArm-hasDepth
+  a sh:PropertyShape ;
+  sh:path mas4aiDEMO:hasDepth ;
+  sh:datatype xsd:integer ;
+  sh:maxCount 1 ;
+.
+mas4aiDEMO:RoboticArm-hasHeight
+  a sh:PropertyShape ;
+  sh:path mas4aiDEMO:hasHeight ;
+  sh:datatype xsd:integer ;
+  sh:maxCount 1 ;
+.
+mas4aiDEMO:RoboticArm-hasJoint
+  a sh:PropertyShape ;
+  sh:path mas4aiDEMO:hasJoint ;
+  sh:class mas4aiDEMO:Joint ;
+.
+mas4aiDEMO:RoboticArm-hasWidth
+  a sh:PropertyShape ;
+  sh:path mas4aiDEMO:hasWidth ;
+  sh:datatype xsd:integer ;
+  sh:maxCount 1 ;
+.
+mas4aiDEMO:RoboticArm-usesTool
+  a sh:PropertyShape ;
+  sh:path mas4aiDEMO:usesTool ;
+  sh:class mas4aiDEMO:Tool ;
+.
+mas4aiDEMO:Software
+  a sh:NodeShape ;
+  sh:property mas4aiDEMO:Software-hasVersionNumber ;
+.
+mas4aiDEMO:Software-hasVersionNumber
+  a sh:PropertyShape ;
+  sh:path mas4aiDEMO:hasVersionNumber ;
+  sh:datatype xsd:integer ;
+  sh:maxCount 1 ;
+.
+mas4aiDEMO:Tool
+  a sh:NodeShape ;
+  sh:property mas4aiDEMO:Tool-ManualLocation ;
+.
+mas4aiDEMO:Tool-ManualLocation
+  a sh:PropertyShape ;
+  sh:path mas4aiDEMO:ManualLocation ;
+  sh:datatype xsd:anyURI ;
+  sh:maxCount 1 ;
+.
+<http://www.tno.nl/mas4aiDEMO.shapes>
+  a owl:Ontology ;
+  owl:imports <http://datashapes.org/dash> ;
+  owl:imports <http://www.tno.nl/mas4aiDEMO> ;
+.
