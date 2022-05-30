@@ -127,7 +127,7 @@ ex:TorquePropertyShape a sh:PropertyShape ;
 ex:OperatingManualPropertyShape a sh:PropertyShape ;
   rdfs:label "OperatingManual"^^xsd:string ;
   sh:group ex:DocumentationGroup ;
-  sh:path <www.vdi2770.com/blatt1/Entwurf/Okt18/cd/Document> ;
+  sh:path <http://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/Document> ;
   sh:class ex:OperatingManual ;
   sh:minCount 1 ;
   sh:maxCount 1 ;
@@ -137,7 +137,7 @@ ex:OperatingManualPropertyShape a sh:PropertyShape ;
 
 ex:DocumentIdShape a sh:PropertyShape ;
   rdfs:label "DocumentId"^^xsd:string ;
-  sh:path <www.vdi2770.com/blatt1/Entwurf/Okt18/cd/DocumentId/Val> ;
+  sh:path <http://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/DocumentId/Val> ;
   sh:datatype xsd:string ;
   sh:minCount 1 ;
   sh:maxCount 1 ;
@@ -145,7 +145,7 @@ ex:DocumentIdShape a sh:PropertyShape ;
 
 ex:DocumentClassIdShape a sh:PropertyShape ;
   rdfs:label "DocumentClassId"^^xsd:string ;
-  sh:path <www.vdi2770.com/blatt1/Entwurf/Okt18/cd/DocumentClassification/ClassId> ;
+  sh:path <http://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/DocumentClassification/ClassId> ;
   sh:datatype xsd:string ;
   sh:minCount 1 ;
   sh:maxCount 1 ;
@@ -153,7 +153,7 @@ ex:DocumentClassIdShape a sh:PropertyShape ;
 
 ex:DocumentClassNameShape a sh:PropertyShape ;
   rdfs:label "DocumentClassName"^^xsd:string ;
-  sh:path <www.vdi2770.com/blatt1/Entwurf/Okt18/cd/DocumentClassification/ClassName> ;
+  sh:path <http://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/DocumentClassification/ClassName> ;
   sh:datatype rdf:langString ;
   sh:minCount 1 ;
   sh:maxCount 1 ;
@@ -161,7 +161,7 @@ ex:DocumentClassNameShape a sh:PropertyShape ;
 
 ex:DocumentClassificationSystemShape a sh:PropertyShape ;
   rdfs:label "DocumentClassificationSystem"^^xsd:string ;
-  sh:path <www.vdi2770.com/blatt1/Entwurf/Okt18/cd/DocumentClassification/ClassificationSystem> ;
+  sh:path <http://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/DocumentClassification/ClassificationSystem> ;
   sh:datatype xsd:string ;
   sh:minCount 1 ;
   sh:maxCount 1 ;
@@ -169,7 +169,7 @@ ex:DocumentClassificationSystemShape a sh:PropertyShape ;
 
 ex:OrganizationNameShape a sh:PropertyShape ;
   rdfs:label "OrganizationName"^^xsd:string ;
-  sh:path <www.vdi2770.com/blatt1/Entwurf/Okt18/cd/Organization/OrganizationName> ;
+  sh:path <http://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/Organization/OrganizationName> ;
   sh:datatype xsd:string ;
   sh:minCount 1 ;
   sh:maxCount 1 ;
@@ -177,7 +177,7 @@ ex:OrganizationNameShape a sh:PropertyShape ;
 
 ex:OrganizationOfficialNameShape a sh:PropertyShape ;
   rdfs:label "OrganizationOfficialName"^^xsd:string ;
-  sh:path <www.vdi2770.com/blatt1/Entwurf/Okt18/cd/Organization/OrganizationOfficialName> ;
+  sh:path <http://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/Organization/OrganizationOfficialName> ;
   sh:datatype xsd:string ;
   sh:minCount 1 ;
   sh:maxCount 1 ;
@@ -185,7 +185,7 @@ ex:OrganizationOfficialNameShape a sh:PropertyShape ;
 
 ex:TitleShape a sh:PropertyShape ;
   rdfs:label "Title"^^xsd:string ;
-  sh:path <www.vdi2770.com/blatt1/Entwurf/Okt18/cd/Description/Title> ;
+  sh:path <http://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/Description/Title> ;
   sh:datatype rdf:langString ;
   sh:minCount 1 ;
   sh:maxCount 1 ;
@@ -193,7 +193,7 @@ ex:TitleShape a sh:PropertyShape ;
 
 ex:LanguageShape a sh:PropertyShape ;
   rdfs:label "Language"^^xsd:string ;
-  sh:path <www.vdi2770.com/blatt1/Entwurf/Okt18/cd/DocumentVersion/Language> ;
+  sh:path <http://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/DocumentVersion/Language> ;
   sh:datatype xsd:string ; #xsd:language
   sh:minCount 1 ;
   sh:maxCount 1 ;
@@ -201,7 +201,7 @@ ex:LanguageShape a sh:PropertyShape ;
 
 #ex:DigitalFilePDFShape a sh:PropertyShape ;
 #  rdfs:label "DigitalFile_PDF"^^xsd:string ;
-#  sh:path <www.vdi2770.com/blatt1/Entwurf/Okt18/cd/StoredDocumentRepresentation/DigitalFile> ;
+#  sh:path <http://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/StoredDocumentRepresentation/DigitalFile> ;
 #  sh:datatype xsd:string ;
 #  sh:minCount 1 ;
 #  sh:maxCount 1 ;
