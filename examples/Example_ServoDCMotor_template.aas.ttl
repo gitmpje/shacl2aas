@@ -1,0 +1,230 @@
+@prefix aas: <https://admin-shell.io/aas/3/0/RC01/> .
+@prefix aasaas: <https://admin-shell.io/aas/3/0/RC01/AssetAdministrationShell/> .
+@prefix aaskey: <https://admin-shell.io/aas/3/0/RC01/Key/> .
+@prefix aaskeyt: <https://admin-shell.io/aas/3/0/RC01/KeyType/> .
+@prefix aaskind: <https://admin-shell.io/aas/3/0/RC01/HasKind/> .
+@prefix aasmod: <https://admin-shell.io/aas/3/0/RC01/ModelingKind/> .
+@prefix aasprop: <https://admin-shell.io/aas/3/0/RC01/Property/> .
+@prefix aasref: <https://admin-shell.io/aas/3/0/RC01/Reference/> .
+@prefix aasrefer: <https://admin-shell.io/aas/3/0/RC01/Referable/> .
+@prefix aassem: <https://admin-shell.io/aas/3/0/RC01/HasSemantics/> .
+@prefix aassm: <https://admin-shell.io/aas/3/0/RC01/Submodel/> .
+@prefix ex: <http://example.org/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://mas4ai.eu/id/aas/template/2912e16f-ad3e-4815-b88a-a93e49da0342> a aas:AssetAdministrationShell ;
+    rdfs:label "Servo DC Motor"^^xsd:string ;
+    aasaas:submodels <http://mas4ai.eu/id/sm/template/a37bec96-5d41-4d9a-9794-292b22b4faec>,
+        <http://mas4ai.eu/id/sm/template/b247b5b1-637b-4264-9cf7-ef48f7e5a47f> ;
+    aassem:semanticId [ a aas:Reference ;
+            aasref:keys [ a aas:Key ;
+                    aaskey:idType aaskeyt:IRI ;
+                    aaskey:value ex:ServoDCMotor ] ] ;
+    aasrefer:idShort "Servo_DC_Motor"^^xsd:string .
+
+<http://mas4ai.eu/id/property/template/16d7069b-ebc4-4ed5-9ff5-7ac5dc290e67> a aas:Property ;
+    rdfs:label "Title"^^xsd:string ;
+    aaskind:kind aasmod:Template ;
+    aassem:semanticId [ a aas:Reference ;
+            aasref:keys [ a aas:Key ;
+                    aaskey:idType aaskeyt:IRI ;
+                    aaskey:value <http://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/Description/Title> ] ] ;
+    aasprop:valueType rdf:langString ;
+    aasrefer:idShort "Title"^^xsd:string .
+
+<http://mas4ai.eu/id/property/template/2516e02a-1c19-4f39-935e-2c74fe72480d> a aas:Property ;
+    rdfs:label "RotationSpeed"^^xsd:string ;
+    aaskind:kind aasmod:Template ;
+    aassem:semanticId [ a aas:Reference ;
+            aasref:keys [ a aas:Key ;
+                    aaskey:idType aaskeyt:IRI ;
+                    aaskey:value ex:rotationSpeed ] ] ;
+    aasprop:valueType xsd:integer ;
+    aasrefer:idShort "RotationSpeed"^^xsd:string .
+
+<http://mas4ai.eu/id/property/template/30948a06-c761-4157-a67a-09ca6ed8849d> a aas:Property ;
+    rdfs:label "MaxRotationSpeed"^^xsd:string ;
+    aaskind:kind aasmod:Template ;
+    aassem:semanticId [ a aas:Reference ;
+            aasref:keys [ a aas:Key ;
+                    aaskey:idType aaskeyt:IRI ;
+                    aaskey:value ex:maxRotationSpeed ] ] ;
+    aasprop:valueType xsd:integer ;
+    aasrefer:idShort "MaxRotationSpeed"^^xsd:string .
+
+<http://mas4ai.eu/id/property/template/3cf8fb2e-25eb-4dd7-815d-4eb025237cb7> a aas:Property ;
+    rdfs:label "DocumentClassificationSystem"^^xsd:string ;
+    aaskind:kind aasmod:Template ;
+    aassem:semanticId [ a aas:Reference ;
+            aasref:keys [ a aas:Key ;
+                    aaskey:idType aaskeyt:IRI ;
+                    aaskey:value <http://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/DocumentClassification/ClassificationSystem> ] ] ;
+    aasprop:valueType xsd:string ;
+    aasrefer:idShort "DocumentClassificationSystem"^^xsd:string .
+
+<http://mas4ai.eu/id/property/template/402e6cc4-27d4-42e1-8baf-460d0779fa0a> a aas:Property ;
+    rdfs:label "GLN"^^xsd:string ;
+    aaskind:kind aasmod:Template ;
+    aassem:semanticId [ a aas:Reference ;
+            aasref:keys [ a aas:Key ;
+                    aaskey:idType aaskeyt:IRI ;
+                    aaskey:value ex:gln ] ] ;
+    aasprop:valueType xsd:integer ;
+    aasrefer:idShort "GLN"^^xsd:string .
+
+<http://mas4ai.eu/id/property/template/412afb6a-ff04-43ec-8d90-77e32c621225> a aas:Property ;
+    rdfs:label "CoolingType"^^xsd:string ;
+    aaskind:kind aasmod:Template ;
+    aassem:semanticId [ a aas:Reference ;
+            aasref:keys [ a aas:Key ;
+                    aaskey:idType aaskeyt:IRI ;
+                    aaskey:value ex:coolingType ] ] ;
+    aasprop:valueType xsd:string ;
+    aasrefer:description "open circuit, external cooling"@en ;
+    aasrefer:idShort "CoolingType"^^xsd:string .
+
+<http://mas4ai.eu/id/property/template/47271fd6-3f97-43a6-9d83-37caad1592f3> a aas:Property ;
+    rdfs:label "DocumentId"^^xsd:string ;
+    aaskind:kind aasmod:Template ;
+    aassem:semanticId [ a aas:Reference ;
+            aasref:keys [ a aas:Key ;
+                    aaskey:idType aaskeyt:IRI ;
+                    aaskey:value <http://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/DocumentId/Val> ] ] ;
+    aasprop:valueType xsd:string ;
+    aasrefer:idShort "DocumentId"^^xsd:string .
+
+<http://mas4ai.eu/id/property/template/7a786eaa-974c-4bdc-a8e1-fef35f1a1890> a aas:Property ;
+    rdfs:label "Manufacturer"^^xsd:string ;
+    aaskind:kind aasmod:Template ;
+    aassem:semanticId [ a aas:Reference ;
+            aasref:keys [ a aas:Key ;
+                    aaskey:idType aaskeyt:IRI ;
+                    aaskey:value ex:manufacturer ] ] ;
+    aasprop:valueType xsd:string ;
+    aasrefer:idShort "Manufacturer"^^xsd:string .
+
+<http://mas4ai.eu/id/property/template/82eac2c3-9bb2-48d7-8337-41c43bb92518> a aas:Property ;
+    rdfs:label "Torque"^^xsd:string ;
+    aaskind:kind aasmod:Template ;
+    aassem:semanticId [ a aas:Reference ;
+            aasref:keys [ a aas:Key ;
+                    aaskey:idType aaskeyt:IRI ;
+                    aaskey:value ex:torque ] ] ;
+    aasprop:valueType xsd:float ;
+    aasrefer:idShort "Torque"^^xsd:string .
+
+<http://mas4ai.eu/id/property/template/86cfa232-f269-427a-8662-823edf181150> a aas:Property ;
+    rdfs:label "DocumentClassId"^^xsd:string ;
+    aaskind:kind aasmod:Template ;
+    aassem:semanticId [ a aas:Reference ;
+            aasref:keys [ a aas:Key ;
+                    aaskey:idType aaskeyt:IRI ;
+                    aaskey:value <http://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/DocumentClassification/ClassId> ] ] ;
+    aasprop:valueType xsd:string ;
+    aasrefer:idShort "DocumentClassId"^^xsd:string .
+
+<http://mas4ai.eu/id/property/template/a0c53a81-efe6-4983-9a96-55b647ed2fd3> a aas:Property ;
+    rdfs:label "OrganizationName"^^xsd:string ;
+    aaskind:kind aasmod:Template ;
+    aassem:semanticId [ a aas:Reference ;
+            aasref:keys [ a aas:Key ;
+                    aaskey:idType aaskeyt:IRI ;
+                    aaskey:value <http://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/Organization/OrganizationName> ] ] ;
+    aasprop:valueType xsd:string ;
+    aasrefer:idShort "OrganizationName"^^xsd:string .
+
+<http://mas4ai.eu/id/property/template/a754ccf8-ef31-459c-abae-5ee5c33ed66b> a aas:Property ;
+    rdfs:label "ProductDesignation"^^xsd:string ;
+    aaskind:kind aasmod:Template ;
+    aassem:semanticId [ a aas:Reference ;
+            aasref:keys [ a aas:Key ;
+                    aaskey:idType aaskeyt:IRI ;
+                    aaskey:value ex:productDesignation ] ] ;
+    aasprop:valueType rdf:langString ;
+    aasrefer:idShort "ProductDesignation"^^xsd:string .
+
+<http://mas4ai.eu/id/property/template/cc277533-51a1-415a-9357-a9bfc0c1381c> a aas:Property ;
+    rdfs:label "MaxTorque"^^xsd:string ;
+    aaskind:kind aasmod:Template ;
+    aassem:semanticId [ a aas:Reference ;
+            aasref:keys [ a aas:Key ;
+                    aaskey:idType aaskeyt:IRI ;
+                    aaskey:value ex:maxTorque ] ] ;
+    aasprop:valueType xsd:float ;
+    aasrefer:idShort "MaxTorque"^^xsd:string .
+
+<http://mas4ai.eu/id/property/template/d105d46e-3de5-4e4a-9613-805311c676bc> a aas:Property ;
+    rdfs:label "SerialNumber"^^xsd:string ;
+    aaskind:kind aasmod:Template ;
+    aassem:semanticId [ a aas:Reference ;
+            aasref:keys [ a aas:Key ;
+                    aaskey:idType aaskeyt:IRI ;
+                    aaskey:value ex:serialNumber ] ] ;
+    aasprop:valueType xsd:string ;
+    aasrefer:idShort "SerialNumber"^^xsd:string .
+
+<http://mas4ai.eu/id/property/template/daa6a9db-6a75-4543-9a45-de25f8702c1f> a aas:Property ;
+    rdfs:label "OrganizationOfficialName"^^xsd:string ;
+    aaskind:kind aasmod:Template ;
+    aassem:semanticId [ a aas:Reference ;
+            aasref:keys [ a aas:Key ;
+                    aaskey:idType aaskeyt:IRI ;
+                    aaskey:value <http://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/Organization/OrganizationOfficialName> ] ] ;
+    aasprop:valueType xsd:string ;
+    aasrefer:idShort "OrganizationOfficialName"^^xsd:string .
+
+<http://mas4ai.eu/id/property/template/dec8a8ba-1c37-44e5-a499-08cfd89dbdc1> a aas:Property ;
+    rdfs:label "Language"^^xsd:string ;
+    aaskind:kind aasmod:Template ;
+    aassem:semanticId [ a aas:Reference ;
+            aasref:keys [ a aas:Key ;
+                    aaskey:idType aaskeyt:IRI ;
+                    aaskey:value <http://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/DocumentVersion/Language> ] ] ;
+    aasprop:valueType xsd:string ;
+    aasrefer:idShort "Language"^^xsd:string .
+
+<http://mas4ai.eu/id/property/template/e665c8cc-3ac5-41cd-8f19-e3a060ce5fcf> a aas:Property ;
+    rdfs:label "DocumentClassName"^^xsd:string ;
+    aaskind:kind aasmod:Template ;
+    aassem:semanticId [ a aas:Reference ;
+            aasref:keys [ a aas:Key ;
+                    aaskey:idType aaskeyt:IRI ;
+                    aaskey:value <http://www.vdi2770.com/blatt1/Entwurf/Okt18/cd/DocumentClassification/ClassName> ] ] ;
+    aasprop:valueType rdf:langString ;
+    aasrefer:idShort "DocumentClassName"^^xsd:string .
+
+<http://mas4ai.eu/id/sm/template/a37bec96-5d41-4d9a-9794-292b22b4faec> a aas:Submodel ;
+    rdfs:label "Servo DC Motor"^^xsd:string ;
+    aaskind:kind aasmod:Template ;
+    aassem:semanticId [ a aas:Reference ;
+            aasref:keys [ a aas:Key ;
+                    aaskey:idType aaskeyt:IRI ] ] ;
+    aasrefer:idShort "Servo_DC_Motor"^^xsd:string ;
+    aassm:submodelElements <http://mas4ai.eu/id/property/template/2516e02a-1c19-4f39-935e-2c74fe72480d>,
+        <http://mas4ai.eu/id/property/template/30948a06-c761-4157-a67a-09ca6ed8849d>,
+        <http://mas4ai.eu/id/property/template/402e6cc4-27d4-42e1-8baf-460d0779fa0a>,
+        <http://mas4ai.eu/id/property/template/412afb6a-ff04-43ec-8d90-77e32c621225>,
+        <http://mas4ai.eu/id/property/template/7a786eaa-974c-4bdc-a8e1-fef35f1a1890>,
+        <http://mas4ai.eu/id/property/template/82eac2c3-9bb2-48d7-8337-41c43bb92518>,
+        <http://mas4ai.eu/id/property/template/a754ccf8-ef31-459c-abae-5ee5c33ed66b>,
+        <http://mas4ai.eu/id/property/template/cc277533-51a1-415a-9357-a9bfc0c1381c>,
+        <http://mas4ai.eu/id/property/template/d105d46e-3de5-4e4a-9613-805311c676bc> .
+
+<http://mas4ai.eu/id/sm/template/b247b5b1-637b-4264-9cf7-ef48f7e5a47f> a aas:Submodel ;
+    rdfs:label "OperatingManual"^^xsd:string ;
+    aaskind:kind aasmod:Template ;
+    aassem:semanticId [ a aas:Reference ;
+            aasref:keys [ a aas:Key ;
+                    aaskey:idType aaskeyt:IRI ] ] ;
+    aasrefer:idShort "OperatingManual"^^xsd:string ;
+    aassm:submodelElements <http://mas4ai.eu/id/property/template/16d7069b-ebc4-4ed5-9ff5-7ac5dc290e67>,
+        <http://mas4ai.eu/id/property/template/3cf8fb2e-25eb-4dd7-815d-4eb025237cb7>,
+        <http://mas4ai.eu/id/property/template/47271fd6-3f97-43a6-9d83-37caad1592f3>,
+        <http://mas4ai.eu/id/property/template/86cfa232-f269-427a-8662-823edf181150>,
+        <http://mas4ai.eu/id/property/template/a0c53a81-efe6-4983-9a96-55b647ed2fd3>,
+        <http://mas4ai.eu/id/property/template/daa6a9db-6a75-4543-9a45-de25f8702c1f>,
+        <http://mas4ai.eu/id/property/template/dec8a8ba-1c37-44e5-a499-08cfd89dbdc1>,
+        <http://mas4ai.eu/id/property/template/e665c8cc-3ac5-41cd-8f19-e3a060ce5fcf> .
+

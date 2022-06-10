@@ -16,7 +16,7 @@
 .
 mas4aiDEMO:ControlledBy
   a owl:ObjectProperty ;
-  rdfs:comment "Relating a robotic arm to a software instruction set controlling a given arm" ;
+  rdfs:comment "Relating a robotic arm to a software instruction set controlling a given arm"@en ;
   rdfs:domain mas4aiDEMO:RoboticArm ;
   rdfs:label "Controlled by" ;
   rdfs:range mas4aiDEMO:Software ;
@@ -24,14 +24,14 @@ mas4aiDEMO:ControlledBy
 .
 mas4aiDEMO:Joint
   a owl:Class ;
-  rdfs:comment "A point around which two beams articulate at a specified speed over a specified range" ;
+  rdfs:comment "A point around which two beams articulate at a specified speed over a specified range"@en ;
   rdfs:label "Joint" ;
   rdfs:subClassOf owl:Thing ;
   skos:prefLabel "Joint" ;
 .
-mas4aiDEMO:ManualLocation
+mas4aiDEMO:manualLocation
   a owl:DatatypeProperty ;
-  rdfs:comment "The web location of the user manual associated with the used tool" ;
+  rdfs:comment "The web location of the user manual associated with the used tool"@en ;
   rdfs:domain mas4aiDEMO:Tool ;
   rdfs:label "Manual location" ;
   rdfs:range xsd:anyURI ;
@@ -39,28 +39,28 @@ mas4aiDEMO:ManualLocation
 .
 mas4aiDEMO:ManufacturingResource
   a owl:Class ;
-  rdfs:comment "A generic manufacturing resource which one may encounter in a factory" ;
+  rdfs:comment "A generic manufacturing resource which one may encounter in a factory"@en ;
   rdfs:label "Manufacturing Resource" ;
   rdfs:subClassOf owl:Thing ;
   skos:prefLabel "Manufacturing Resource" ;
 .
 mas4aiDEMO:RoboticArm
   a owl:Class ;
-  rdfs:comment "A robot arm which can be used for a variety of different manufacturing tasks depending on the equiped tool" ;
+  rdfs:comment "A robot arm which can be used for a variety of different manufacturing tasks depending on the equiped tool"@en ;
   rdfs:label "Robotic Arm" ;
   rdfs:subClassOf mas4aiDEMO:ManufacturingResource ;
-  skos:prefLabel "Robotic Arm" ;
+  skos:prefLabel "Robotic Arm"@en ;
 .
 mas4aiDEMO:Software
   a owl:Class ;
-  rdfs:comment "The software controlling a robotic arm" ;
+  rdfs:comment "The software controlling a robotic arm"@en ;
   rdfs:label "Software" ;
   rdfs:subClassOf owl:Thing ;
   skos:prefLabel "Software" ;
 .
 mas4aiDEMO:Tool
   a owl:Class ;
-  rdfs:comment "A tool which may be used by a robotic arm to have it fullfill a variety of functions" ;
+  rdfs:comment "A tool which may be used by a robotic arm to have it fullfill a variety of functions"@en ;
   rdfs:label "Tool" ;
   rdfs:subClassOf mas4aiDEMO:ManufacturingResource ;
   skos:prefLabel "Tool" ;
@@ -70,7 +70,7 @@ mas4aiDEMO:dimensionProperties
 .
 mas4aiDEMO:hasDepth
   a owl:DatatypeProperty ;
-  rdfs:comment "The depth of the robotic arm in centimeters" ;
+  rdfs:comment "The depth of the robotic arm in centimeters"@en ;
   rdfs:domain mas4aiDEMO:RoboticArm ;
   rdfs:label "Has depth" ;
   rdfs:range xsd:integer ;
@@ -79,7 +79,7 @@ mas4aiDEMO:hasDepth
 .
 mas4aiDEMO:hasHeight
   a owl:DatatypeProperty ;
-  rdfs:comment "The height of the robotic arm, expressed in cm" ;
+  rdfs:comment "The height of the robotic arm, expressed in cm"@en ;
   rdfs:domain mas4aiDEMO:RoboticArm ;
   rdfs:label "Has height" ;
   rdfs:range xsd:integer ;
@@ -88,7 +88,7 @@ mas4aiDEMO:hasHeight
 .
 mas4aiDEMO:hasJoint
   a owl:ObjectProperty ;
-  rdfs:comment "Relating a robotic arm to its joints" ;
+  rdfs:comment "Relating a robotic arm to its joints"@en ;
   rdfs:domain mas4aiDEMO:RoboticArm ;
   rdfs:label "Has joint" ;
   rdfs:range mas4aiDEMO:Joint ;
@@ -96,15 +96,15 @@ mas4aiDEMO:hasJoint
 .
 mas4aiDEMO:hasMaxSpeed
   a owl:DatatypeProperty ;
-  rdfs:comment "The maximum speed of rotation of a joint, expressed in degrees per second" ;
+  rdfs:comment "The maximum speed of rotation of a joint, expressed in degrees per second"@en ;
   rdfs:domain mas4aiDEMO:Joint ;
-  rdfs:label "Has Maxiumum speed" ;
+  rdfs:label "Has Maximum speed" ;
   rdfs:range xsd:decimal ;
   skos:prefLabel "Has maximum speed" ;
 .
 mas4aiDEMO:hasRange
   a owl:DatatypeProperty ;
-  rdfs:comment "The range over which a joint can articulate, expressed in the amount of degrees between the two limits of rotation" ;
+  rdfs:comment "The range over which a joint can articulate, expressed in the amount of degrees between the two limits of rotation"@en ;
   rdfs:domain mas4aiDEMO:Joint ;
   rdfs:label "Has range" ;
   rdfs:range xsd:decimal ;
@@ -112,7 +112,7 @@ mas4aiDEMO:hasRange
 .
 mas4aiDEMO:hasVersionNumber
   a owl:DatatypeProperty ;
-  rdfs:comment "The version number of a piece of software" ;
+  rdfs:comment "The version number of a piece of software"@en ;
   rdfs:domain mas4aiDEMO:Software ;
   rdfs:label "Has version number" ;
   rdfs:range xsd:integer ;
@@ -120,7 +120,7 @@ mas4aiDEMO:hasVersionNumber
 .
 mas4aiDEMO:hasWeight
   a owl:DatatypeProperty ;
-  rdfs:comment "The weight of a piece of manufacturing equipment, expressed in Kg" ;
+  rdfs:comment "The weight of a piece of manufacturing equipment, expressed in Kg"@en ;
   rdfs:domain mas4aiDEMO:ManufacturingResource ;
   rdfs:label "Has weight" ;
   rdfs:range xsd:integer ;
@@ -128,7 +128,7 @@ mas4aiDEMO:hasWeight
 .
 mas4aiDEMO:hasWidth
   a owl:DatatypeProperty ;
-  rdfs:comment "The width of the robotic arm, expressed in cm" ;
+  rdfs:comment "The width of the robotic arm, expressed in cm"@en ;
   rdfs:domain mas4aiDEMO:RoboticArm ;
   rdfs:label "Has width" ;
   rdfs:range xsd:integer ;
@@ -137,30 +137,32 @@ mas4aiDEMO:hasWidth
 .
 mas4aiDEMO:usesTool
   a owl:ObjectProperty ;
-  rdfs:comment "Relates a robotic arm to the tool it is currently equiped with" ;
+  rdfs:comment "Relates a robotic arm to the tool it is currently equiped with"@en ;
   rdfs:domain mas4aiDEMO:RoboticArm ;
   rdfs:label "Uses tool" ;
   rdfs:range mas4aiDEMO:Tool ;
   skos:prefLabel "Uses tool" ;
 .
-[
-  a mas4aiDEMO:RoboticArm ;
-  mas4aiDEMO:ControlledBy [
-      a mas4aiDEMO:Software ;
-      mas4aiDEMO:hasVersionNumber 1 ;
-    ] ;
+
+
+# Instance
+mas4aiDEMO:RoboticArm1 a mas4aiDEMO:RoboticArm ;
+  rdfs:label "RoboticArm1" ;
   mas4aiDEMO:hasDepth 50 ;
   mas4aiDEMO:hasHeight 95 ;
-  mas4aiDEMO:hasJoint [
-      a mas4aiDEMO:Joint ;
-      mas4aiDEMO:hasMaxSpeed "7"^^xsd:decimal ;
-      mas4aiDEMO:hasRange "180"^^xsd:decimal ;
-    ] ;
   mas4aiDEMO:hasWeight 250 ;
   mas4aiDEMO:hasWidth 50 ;
-  mas4aiDEMO:usesTool [
-      a mas4aiDEMO:Tool ;
-      mas4aiDEMO:ManualLocation "https://www.mas4ai.eu/publications/"^^xsd:anyURI ;
-      mas4aiDEMO:hasWeight 2 ;
-    ] ;
-].
+  mas4aiDEMO:ControlledBy mas4aiDEMO:Software1 ;
+  mas4aiDEMO:hasJoint mas4aiDEMO:Joint1 ;
+  mas4aiDEMO:usesTool mas4aiDEMO:Tool1 .
+
+mas4aiDEMO:Software1 a mas4aiDEMO:Software ;
+  mas4aiDEMO:hasVersionNumber 1 .
+
+mas4aiDEMO:Joint1 a mas4aiDEMO:Joint ;
+  mas4aiDEMO:hasMaxSpeed "7"^^xsd:decimal ;
+  mas4aiDEMO:hasRange "180"^^xsd:decimal .
+
+mas4aiDEMO:Tool1 a mas4aiDEMO:Tool ;
+  mas4aiDEMO:manualLocation "https://www.mas4ai.eu/publications/"^^xsd:anyURI ;
+  mas4aiDEMO:hasWeight 2 .
