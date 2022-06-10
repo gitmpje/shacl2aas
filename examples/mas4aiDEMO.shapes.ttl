@@ -94,11 +94,11 @@ mas4aiDEMO:Software-hasVersionNumber
 .
 mas4aiDEMO:Tool
   a sh:NodeShape ;
-  sh:property mas4aiDEMO:Tool-ManualLocation ;
+  sh:property mas4aiDEMO:Tool-manualLocation ;
 .
-mas4aiDEMO:Tool-ManualLocation
+mas4aiDEMO:Tool-manualLocation
   a sh:PropertyShape ;
-  sh:path mas4aiDEMO:ManualLocation ;
+  sh:path mas4aiDEMO:manualLocation ;
   sh:datatype xsd:anyURI ;
   sh:maxCount 1 ;
 .
