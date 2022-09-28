@@ -1,0 +1,32 @@
+CONSTRUCT {
+  # Submodel Element Collection (SMC)
+  ?SMC_iri a aas:SubmodelElementCollection ;
+    aassem:semanticId [
+      a aas:Reference ;
+      aasref:keys [
+        a aas:Key ;
+        aaskey:idType aaskeyt:IRI ;
+        aaskey:value ?Class ;
+      ] ;
+    ] ;
+    prov:wasDerivedFrom ?PropertyShape, ?NodeShape ;
+    mas4ai:constructedByQuery "construct_smc_non-aas-class.rq" ;
+  .
+}
+WHERE {
+  ?PropertyShape sh:class ?Class .
+  ?NodeShape a sh:NodeShape ;
+    sh:targetClass ?Class .
+
+  FILTER EXISTS { ?NodeShape sh:property [] }
+  FILTER NOT EXISTS { ?NodeShape mas4ai:hasInterface [] } #exclude reference element properties
+
+  # Exclude property-node pairs directly connected to a 'main' AAS node via a cardinality one property
+  MINUS {
+    ?Shape mas4ai:hasInterface [] ;
+      sh:property ?PropertyShape .
+    ?PropertyShape sh:maxCount 1 .
+  }
+
+  BIND(iri(concat( "http://mas4ai.eu/id/smc/template/", struuid() )) as ?SMC_iri)
+}

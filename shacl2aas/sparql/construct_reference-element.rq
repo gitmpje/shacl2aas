@@ -1,0 +1,25 @@
+CONSTRUCT {
+  # Reference Element
+  ?ReferenceElement_iri a aas:ReferenceElement ;
+    aassem:semanticId [
+      a aas:Reference ;
+      aasref:keys [
+        a aas:Key ;
+        aaskey:idType aaskeyt:IRI ;
+        aaskey:value ?ReferenceElement ;
+      ] ;
+    ] ;
+    prov:wasDerivedFrom ?PropertyShape, ?Class ;
+    mas4ai:constructedByQuery "construct_reference-element.rq" ;
+  .
+}
+WHERE {
+  ?PropertyShape a sh:PropertyShape ;
+    sh:path ?ReferenceElement ;
+    sh:class ?Class ; #filter on reference properties
+  .
+
+  FILTER EXISTS { ?Class ^sh:targetClass/mas4ai:hasInterface [] } #otherwise it should be a Submodel or SMC
+
+  BIND(iri(concat( "http://mas4ai.eu/id/referenceElement/template/", struuid() )) as ?ReferenceElement_iri)
+}

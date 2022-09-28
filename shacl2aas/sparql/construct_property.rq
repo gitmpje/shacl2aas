@@ -1,0 +1,27 @@
+CONSTRUCT {
+  # Property
+  ?Property_iri a aas:Property ;
+    aasprop:valueType ?datatype ;
+    aassem:semanticId [
+      a aas:Reference ;
+      aasref:keys [
+        a aas:Key ;
+        aaskey:idType aaskeyt:IRI ;
+        aaskey:value ?Property ;
+      ] ;
+    ] ;
+    prov:wasDerivedFrom ?PropertyShape ;
+    mas4ai:constructedByQuery "construct_property.rq" ;
+  .
+}
+WHERE {
+  ?PropertyShape a sh:PropertyShape ;
+    sh:path ?Property ;
+    sh:datatype ?datatype ;
+  .
+
+  FILTER(?datatype != rdf:langString) #filter out multi-language properties
+  FILTER NOT EXISTS { ?PropertyShape sh:class [] } #filter out reference (object) properties
+
+  BIND(iri(concat( "http://mas4ai.eu/id/property/template/", struuid() )) as ?Property_iri)
+}

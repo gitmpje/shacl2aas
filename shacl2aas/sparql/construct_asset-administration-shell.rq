@@ -1,0 +1,12 @@
+CONSTRUCT {
+  # Asset Administration Shell (AAS)
+  ?AAS_iri a aas:AssetAdministrationShell ;
+    prov:wasDerivedFrom ?AASNode ;
+    mas4ai:constructedByQuery "construct_asset-administration-shell.rq" ;
+  .
+}
+WHERE {
+  ?AASNode mas4ai:hasInterface [] .
+
+  BIND(iri(concat( "http://mas4ai.eu/id/aas/template/", struuid() )) as ?AAS_iri)
+}

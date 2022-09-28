@@ -8,14 +8,16 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix sosa: <http://www.w3.org/ns/sosa/> .
 
 <http://www.tno.nl/mas4aiDEMO>
   a owl:Ontology ;
-  owl:imports <http://www.w3.org/2004/02/skos/core> ;
+  # owl:imports <http://www.w3.org/2004/02/skos/core> ;
+  # owl:imports <http://www.w3.org/ns/sosa/> ;
   owl:versionInfo "Created with TopBraid Composer" ;
 .
-mas4aiDEMO:ControlledBy
-  a owl:ObjectProperty ;
+mas4aiDEMO:controlledBy
+  a owl:ObjectProperty , owl:FunctionalProperty ;
   rdfs:comment "Relating a robotic arm to a software instruction set controlling a given arm"@en ;
   rdfs:domain mas4aiDEMO:RoboticArm ;
   rdfs:label "Controlled by" ;
@@ -30,7 +32,7 @@ mas4aiDEMO:Joint
   skos:prefLabel "Joint" ;
 .
 mas4aiDEMO:manualLocation
-  a owl:DatatypeProperty ;
+  a owl:DatatypeProperty , owl:FunctionalProperty ;
   rdfs:comment "The web location of the user manual associated with the used tool"@en ;
   rdfs:domain mas4aiDEMO:Tool ;
   rdfs:label "Manual location" ;
@@ -65,11 +67,17 @@ mas4aiDEMO:Tool
   rdfs:subClassOf mas4aiDEMO:ManufacturingResource ;
   skos:prefLabel "Tool" ;
 .
+mas4aiDEMO:Position
+  a owl:Class ;
+  rdfs:comment "Position of an object"@en ;
+  rdfs:label "Position" ;
+  skos:prefLabel "Object Position" ;
+.
 mas4aiDEMO:dimensionProperties
   a rdf:Property ;
 .
 mas4aiDEMO:hasDepth
-  a owl:DatatypeProperty ;
+  a owl:DatatypeProperty , owl:FunctionalProperty ;
   rdfs:comment "The depth of the robotic arm in centimeters"@en ;
   rdfs:domain mas4aiDEMO:RoboticArm ;
   rdfs:label "Has depth" ;
@@ -78,7 +86,7 @@ mas4aiDEMO:hasDepth
   skos:prefLabel "Has depth" ;
 .
 mas4aiDEMO:hasHeight
-  a owl:DatatypeProperty ;
+  a owl:DatatypeProperty , owl:FunctionalProperty ;
   rdfs:comment "The height of the robotic arm, expressed in cm"@en ;
   rdfs:domain mas4aiDEMO:RoboticArm ;
   rdfs:label "Has height" ;
@@ -95,7 +103,7 @@ mas4aiDEMO:hasJoint
   skos:prefLabel "Has joint" ;
 .
 mas4aiDEMO:hasMaxSpeed
-  a owl:DatatypeProperty ;
+  a owl:DatatypeProperty , owl:FunctionalProperty ;
   rdfs:comment "The maximum speed of rotation of a joint, expressed in degrees per second"@en ;
   rdfs:domain mas4aiDEMO:Joint ;
   rdfs:label "Has Maximum speed" ;
@@ -103,7 +111,7 @@ mas4aiDEMO:hasMaxSpeed
   skos:prefLabel "Has maximum speed" ;
 .
 mas4aiDEMO:hasRange
-  a owl:DatatypeProperty ;
+  a owl:DatatypeProperty , owl:FunctionalProperty ;
   rdfs:comment "The range over which a joint can articulate, expressed in the amount of degrees between the two limits of rotation"@en ;
   rdfs:domain mas4aiDEMO:Joint ;
   rdfs:label "Has range" ;
@@ -111,7 +119,7 @@ mas4aiDEMO:hasRange
   skos:prefLabel "Has range" ;
 .
 mas4aiDEMO:hasVersionNumber
-  a owl:DatatypeProperty ;
+  a owl:DatatypeProperty , owl:FunctionalProperty ;
   rdfs:comment "The version number of a piece of software"@en ;
   rdfs:domain mas4aiDEMO:Software ;
   rdfs:label "Has version number" ;
@@ -119,12 +127,20 @@ mas4aiDEMO:hasVersionNumber
   skos:prefLabel "Has version number" ;
 .
 mas4aiDEMO:hasWeight
-  a owl:DatatypeProperty ;
+  a owl:DatatypeProperty , owl:FunctionalProperty ;
   rdfs:comment "The weight of a piece of manufacturing equipment, expressed in Kg"@en ;
   rdfs:domain mas4aiDEMO:ManufacturingResource ;
   rdfs:label "Has weight" ;
   rdfs:range xsd:integer ;
   skos:prefLabel "Has weight" ;
+.
+mas4aiDEMO:resourceName
+  a owl:DatatypeProperty ;
+  rdfs:comment "The name of the resource"@en ;
+  rdfs:domain mas4aiDEMO:ManufacturingResource ;
+  rdfs:label "Resource name" ;
+  rdfs:range rdf:langString ;
+  skos:prefLabel "Resource name" ;
 .
 mas4aiDEMO:hasWidth
   a owl:DatatypeProperty ;
@@ -135,6 +151,14 @@ mas4aiDEMO:hasWidth
   rdfs:subPropertyOf mas4aiDEMO:dimensionProperties ;
   skos:prefLabel "Has width" ;
 .
+mas4aiDEMO:rotation
+  a owl:DatatypeProperty , owl:FunctionalProperty ;
+  rdfs:comment "The rotation in degrees"@en ;
+  rdfs:domain mas4aiDEMO:Position ;
+  rdfs:label "Rotation" ;
+  rdfs:range xsd:integer ;
+  skos:prefLabel "Rotation" ;
+.
 mas4aiDEMO:usesTool
   a owl:ObjectProperty ;
   rdfs:comment "Relates a robotic arm to the tool it is currently equiped with"@en ;
@@ -142,6 +166,14 @@ mas4aiDEMO:usesTool
   rdfs:label "Uses tool" ;
   rdfs:range mas4aiDEMO:Tool ;
   skos:prefLabel "Uses tool" ;
+.
+mas4aiDEMO:hasPosition
+  a owl:ObjectProperty , owl:FunctionalProperty ;
+  rdfs:comment "Relates an object to a description of the position"@en ;
+  rdfs:domain mas4aiDEMO:Joint  ;
+  rdfs:label "Has position" ;
+  rdfs:range mas4aiDEMO:Position ;
+  skos:prefLabel "Has position" ;
 .
 
 

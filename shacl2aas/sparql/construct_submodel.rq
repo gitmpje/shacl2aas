@@ -1,0 +1,30 @@
+CONSTRUCT {
+  # Submodel (SM)
+  ?SM_iri a aas:Submodel ;
+    aassem:semanticId [
+      a aas:Reference ;
+      aasref:keys [
+        a aas:Key ;
+        aaskey:idType aaskeyt:IRI ;
+        aaskey:value ?SemanticId ;
+      ] ;
+    ] ;
+    prov:wasDerivedFrom ?NodeShape, ?PropertyShape ;
+    mas4ai:constructedByQuery "construct_submodel.rq" ;
+  .
+}
+WHERE {
+  ?NodeShape a sh:NodeShape ;
+    sh:targetClass ?Class .
+
+  {
+    ?PropertyShape sh:class ?Class .
+
+    FILTER EXISTS { ?PropertyShape ^sh:property/mas4ai:hasInterface [] }
+  } UNION {
+    ?NodeShape mas4ai:hasInterface [] #Submodel for main node shape (data type properties)
+  }
+
+  BIND(iri(concat( "http://mas4ai.eu/id/sm/template/", struuid() )) as ?SM_iri)
+  BIND(COALESCE(?Property, ?Class) AS ?SemanticId)
+}
