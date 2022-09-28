@@ -1,19 +1,27 @@
 DELETE {
   GRAPH <http://mas4ai.eu/id/graph/aas> {
-    ?Submodel aassm:submodelElements ?SMC2 .
+    ?Submodel aassm:submodelElements ?SME_redundant .
 }
 }
 WHERE {
-  ?Submodel aassm:submodelElements ?SMC , ?SMC2.
-  ?SMC aassmc:value ?SMC2 .
+  ?Submodel aassm:submodelElements ?SME , ?SME_redundant.
+  ?SME prov:wasDerivedFrom/sh:property/^prov:wasDerivedFrom ?SME_redundant .
+  FILTER(?SME != ?SME_redundant)
 
-  MINUS {
+  FILTER NOT EXISTS {
     ?Submodel prov:wasDerivedFrom ?NodeShape , ?PropertyShape .
-    ?SMC2 prov:wasDerivedFrom ?NodeShape , ?PropertyShape .
+    ?SME_redundant prov:wasDerivedFrom ?NodeShape , ?PropertyShape .
     ?NodeShape a sh:NodeShape .
-    ?PropertyShape a owl:PropertyShape .
+    ?PropertyShape sh:class/^sh:targetClass ?NodeShape .
   }
-  MINUS {
+  FILTER NOT EXISTS {
+    ?Submodel prov:wasDerivedFrom ?NodeShape , ?PropertyShape .
+    ?SME_redundant prov:wasDerivedFrom ?NodeShape , ?PropertyShape .
+    ?NodeShape mas4ai:hasInterface [] .
+    ?PropertyShape a sh:PropertyShape .
+  }
+  FILTER NOT EXISTS {
     ?Submodel prov:wasDerivedFrom/sh:maxCount 1 .
+    MINUS { ?Submodel prov:wasDerivedFrom/mas4ai:hasInterface [] }
   }
 }

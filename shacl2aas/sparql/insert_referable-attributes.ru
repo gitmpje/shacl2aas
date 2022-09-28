@@ -37,13 +37,20 @@ WHERE {
 
   BIND ( REPLACE(str(?SourceShape), ".+[//#]([a-z0-9_]+)$", "$1") as ?noLabel)
   BIND ( REPLACE(COALESCE(?_idShort, ?label_en, ?label, ?noLabel), "[-//(), ]", "_") AS ?_idShort )
-  # Plural idShort on SMC for cardinality>1 properties
+
+  # Plural idShort on Submodel or SMC of not cardinality one properties
   BIND (
-    IF( EXISTS { ?Object prov:wasDerivedFrom ?PropertyShape } &&
+    IF(
+      EXISTS {
+        ?Object prov:wasDerivedFrom ?NodeShape , ?PropertyShape ;
+          (aassm:submodelElements|aassmc:value)/prov:wasDerivedFrom ?NodeShape , ?PropertyShape .
+        ?NodeShape a sh:NodeShape .
+        ?PropertyShape a sh:PropertyShape .
+      } &&
       NOT EXISTS { ?PropertyShape sh:maxCount 1 },
       CONCAT(?_idShort, "s"),
-      ?_idShort )
-    AS ?idShort
+      ?_idShort
+    ) AS ?idShort
   )
 
   OPTIONAL {
