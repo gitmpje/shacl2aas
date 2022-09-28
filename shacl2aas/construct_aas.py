@@ -58,8 +58,8 @@ def construct_aas(g_in: Graph, g_in_path: str, debug: Boolean):
                 print('Cannot import ', file.toPython())
 
     # drop_inverse_properties(g_shacl)
-    infer_properties(g_shacl)
     enrich_shapes(g_shacl)
+    infer_properties(g_shacl)
 
     if debug:
         g_shacl.serialize(os.path.join(LOGS_DIR, "g_shacl.ttl"))

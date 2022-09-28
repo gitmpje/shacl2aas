@@ -30,7 +30,7 @@ WHERE {
       FILTER NOT EXISTS { ?Submodel prov:wasDerivedFrom/mas4ai:hasInterface [] }
     }
   } UNION {
-    # Nested cardinality one object properties
+    # Nested properties for 'cardinality one submodel'
     ?Submodel a aas:Submodel ;
       prov:wasDerivedFrom/sh:maxCount 1 ;
       prov:wasDerivedFrom ?NodeShape .
@@ -39,7 +39,6 @@ WHERE {
       prov:wasDerivedFrom ?PropertyShape .
 
     ?NodeShape sh:property ?PropertyShape .
-    FILTER EXISTS { ?PropertyShape sh:maxCount 1 }
   } UNION {
     # Cardinality >1 object properties
     ?Submodel a aas:Submodel ;

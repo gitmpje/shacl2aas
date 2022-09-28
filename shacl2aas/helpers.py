@@ -62,19 +62,29 @@ def drop_inverse_properties(g_owl: Graph): #TODO: convert to SHACL
 def infer_properties(g_shacl: Graph):
     g_shacl.update('''
 INSERT {
-  ?SubClass sh:property ?PropertyShape
+  ?NodeShape sh:property ?PropertyShape
 }
 WHERE {
-  VALUES ?PropertyType {owl:ObjectProperty owl:DatatypeProperty}
-  ?Property a ?PropertyType ;
-    rdfs:domain ?Class .
-  ?PropertyShape sh:path ?Property.
-  ?SubClass rdfs:subClassOf+ ?Class .
+  ?ClassNode a sh:NodeShape ;
+    sh:targetClass ?Class ;
+    sh:property ?PropertyShape .
+  ?NodeShape sh:targetClass/rdfs:subClassOf+ ?Class .
 }
 ''')
 
 
 def enrich_shapes(g_shacl: Graph):
+    # Insert sh:targetClass if same URI is used for NodeShape and Class
+    g_shacl.update('''
+INSERT {
+  ?NodeShape sh:targetClass ?NodeShape
+}
+WHERE {
+  ?NodeShape a sh:NodeShape , rdfs:Class
+}
+''')
+
+    # Copy annotations from ontology
     g_shacl.update('''
 INSERT {
   ?Shape ?p ?value
