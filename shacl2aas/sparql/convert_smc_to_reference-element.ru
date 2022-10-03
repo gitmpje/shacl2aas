@@ -12,7 +12,7 @@ INSERT {
         a aas:Reference ;
         aasref:keys [
           a aas:Key ;
-          aaskey:idType aaskeyt:IRI ;
+          aaskey:idType aaskeyt:Iri ;
           aaskey:value ?semanticIdValue ;
         ] ;
       ] ;
@@ -20,7 +20,7 @@ INSERT {
         a aas:Reference ;
         aasref:keys [
           a aas:Key ;
-          aaskey:idType aaskeyt:SubmodelElementCollection ;
+          aaskey:idType aaskeyt:Iri ;
           aaskey:value ?SMC ;
         ] ;
       ] ;
