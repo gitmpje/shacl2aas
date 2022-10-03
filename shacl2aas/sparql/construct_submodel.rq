@@ -5,7 +5,7 @@ CONSTRUCT {
       a aas:Reference ;
       aasref:keys [
         a aas:Key ;
-        aaskey:idType aaskeyt:IRI ;
+        aaskey:idType aaskeyt:Iri ;
         aaskey:value ?SemanticId ;
       ] ;
     ] ;
@@ -18,7 +18,8 @@ WHERE {
     sh:targetClass ?Class .
 
   {
-    ?PropertyShape sh:class ?Class .
+    ?PropertyShape sh:class ?Class ;
+      sh:path ?Property .
 
     FILTER EXISTS { ?PropertyShape ^sh:property/mas4ai:hasInterface [] }
   } UNION {

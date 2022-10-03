@@ -4,7 +4,7 @@ INSERT {
         a aas:Reference ;
         aasref:keys [
           a aas:Key ;
-          aaskey:idType aaskeyt:AssetAdministrationShell ;
+          aaskey:idType aaskeyt:Iri ;
           aaskey:value ?_ReferenceAAS ;
         ] ;
       ] ;

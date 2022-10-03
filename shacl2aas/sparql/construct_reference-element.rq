@@ -5,7 +5,7 @@ CONSTRUCT {
       a aas:Reference ;
       aasref:keys [
         a aas:Key ;
-        aaskey:idType aaskeyt:IRI ;
+        aaskey:idType aaskeyt:Iri ;
         aaskey:value ?ReferenceElement ;
       ] ;
     ] ;
