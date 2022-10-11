@@ -23,9 +23,9 @@ def initialize_dataset(g_in: Graph):
     g_shacl.parse(data=g_in.serialize())
 
     # Add AAS RDF ontology graph to dataset
-    g_AAS_ont = dataset.graph(identifier=URIRef("https://admin-shell.io/aas/3/0/RC01/"))
-    g_AAS_ont.parse(os.path.join(MAIN_DIR, "rdf-ontology_V3.0.4RC01.ttl"), format="text/turtle")
-    # g_AAS_ont.parse("https://raw.githubusercontent.com/admin-shell-io/aas-specs/draft-V3RC02-schemas/schemas/rdf/rdf-ontology.ttl", format="text/turtle")
+    g_AAS_ont = dataset.graph(identifier=URIRef("https://admin-shell.io/aas/3/0/RC02/"))
+    g_AAS_ont.parse(os.path.join(MAIN_DIR, "rdf-ontology_V3.0.5RC02.ttl"), format="text/turtle")
+    # g_AAS_ont.parse("https://raw.githubusercontent.com/admin-shell-io/aas-specs/master/schemas/rdf/rdf-ontology.ttl", format="text/turtle")
 
     # Add graph to store the AAS Template graph in
     dataset.graph(identifier=URIRef("http://mas4ai.eu/id/graph/aas/template"))
