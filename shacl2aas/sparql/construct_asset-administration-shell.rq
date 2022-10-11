@@ -2,11 +2,28 @@ CONSTRUCT {
   # Asset Administration Shell (AAS)
   ?AAS_iri a aas:AssetAdministrationShell ;
     prov:wasDerivedFrom ?AASNode ;
+    aasaas:assetInformation ?Asset_iri ;
     mas4ai:constructedByQuery "construct_asset-administration-shell.rq" ;
+  .
+
+  ?Asset_iri a aas:AssetInformation ;
+    assetinf:globalAssetId [
+      a aas:Reference ;
+      aasref:referredSemanticId [
+        a aas:Reference ;
+        aasref:keys [
+          a aas:Key ;
+          aaskey:idType aaskeyt:Iri ;
+          aaskey:value ?AssetClass ;
+        ]
+      ]
+    ]
   .
 }
 WHERE {
-  ?AASNode mas4ai:hasInterface [] .
+  ?AASNode mas4ai:hasInterface [] ;
+    sh:targetClass ?AssetClass .
 
   BIND(iri(concat( "http://mas4ai.eu/id/aas/template/", struuid() )) as ?AAS_iri)
+  BIND(iri(concat( "http://mas4ai.eu/id/asset/template/", struuid() )) as ?Asset_iri)
 }
