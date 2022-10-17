@@ -17,14 +17,16 @@ WHERE {
     WHERE {
         ?Object a/rdfs:subClassOf* aas:Referable ;
         OPTIONAL {
-          ?Object prov:wasDerivedFrom ?NodeShape .
+          ?Object aassem:semanticId/aasref:keys/aaskey:value ?Class .
           ?NodeShape a sh:NodeShape ;
-            rdfs:label ?nodeLabel .
+            rdfs:label ?nodeLabel ;
+            sh:targetClass ?Class .
         }
         OPTIONAL {
-          ?Object prov:wasDerivedFrom ?_PropertyShape .
-          ?_PropertyShape a sh:PropertyShape .
-          ?_PropertyShape rdfs:label ?propertyLabel .
+          ?Object aassem:semanticId/aasref:keys/aaskey:value ?property .
+          ?_PropertyShape a sh:PropertyShape ;
+            rdfs:label ?propertyLabel ;
+            sh:path ?property .
         }
   } }
 
