@@ -96,6 +96,8 @@ def construct_aas(g_in: Graph, g_in_path: str, debug: Boolean):
     add_prefixes(dataset)
     g_conj.update(insert_sm_submodelelements)
     add_prefixes(dataset)
+    g_conj.update(insert_additional_semantic_refs)
+    add_prefixes(dataset)
     g_conj.update(delete_redundant_submodelelements)
 
     add_prefixes(dataset)
