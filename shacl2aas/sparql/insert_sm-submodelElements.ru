@@ -1,5 +1,5 @@
 INSERT {
-  GRAPH <http://mas4ai.eu/id/graph/aas> {
+  GRAPH <http://mas4ai.eu/id/graph/aas/template> {
     ?Submodel aassm:submodelElements ?SubmodelElement .
   }
 }
@@ -40,7 +40,7 @@ WHERE {
 
     ?NodeShape sh:property ?PropertyShape .
   } UNION {
-    # Cardinality >1 object properties
+    # Cardinality >1 (object) properties
     ?Submodel a aas:Submodel ;
       prov:wasDerivedFrom ?NodeShape, ?PropertyShape .
 

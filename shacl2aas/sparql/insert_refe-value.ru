@@ -1,5 +1,5 @@
 INSERT {
-  GRAPH <http://mas4ai.eu/id/graph/aas> {
+  GRAPH <http://mas4ai.eu/id/graph/aas/template> {
     ?ReferenceElement aasrefe:value [
         a aas:Reference ;
         aasref:keys [

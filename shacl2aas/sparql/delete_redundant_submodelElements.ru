@@ -1,7 +1,7 @@
 DELETE {
-  GRAPH <http://mas4ai.eu/id/graph/aas> {
+  GRAPH <http://mas4ai.eu/id/graph/aas/template> {
     ?Submodel aassm:submodelElements ?SME_redundant .
-}
+  }
 }
 WHERE {
   ?Submodel aassm:submodelElements ?SME , ?SME_redundant.

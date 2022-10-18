@@ -1,5 +1,5 @@
 INSERT {
-  GRAPH <http://mas4ai.eu/id/graph/aas> {
+  GRAPH <http://mas4ai.eu/id/graph/aas/template> {
     ?SMC aassmc:value ?Value .
   }
 }
@@ -15,12 +15,6 @@ WHERE {
 
     ?Value a ?SubmodelElementType ;
       prov:wasDerivedFrom ?PropertyShape .
-
-    MINUS {
-      ?Value prov:wasDerivedFrom/a owl:NodeShape ;
-        prov:wasDerivedFrom ?PropertyShape .
-      FILTER NOT EXISTS { ?PropertyShape sh:maxCount 1 }
-    }
   } UNION {
     # Cardinality>1 (datatype) properties
     ?SMC a aas:SubmodelElementCollection ;
@@ -29,7 +23,7 @@ WHERE {
 
     ?Value a ?SubmodelElementType ;
       prov:wasDerivedFrom ?PropertyShape .
-  }
 
-  FILTER (?Value != ?SMC)
+    FILTER (?Value != ?SMC)
+  }
 }
