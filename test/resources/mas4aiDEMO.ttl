@@ -175,26 +175,3 @@ mas4aiDEMO:hasPosition
   rdfs:range mas4aiDEMO:Position ;
   skos:prefLabel "Has position" ;
 .
-
-
-# Instance
-mas4aiDEMO:RoboticArm1 a mas4aiDEMO:RoboticArm ;
-  rdfs:label "RoboticArm1" ;
-  mas4aiDEMO:hasDepth 50 ;
-  mas4aiDEMO:hasHeight 95 ;
-  mas4aiDEMO:hasWeight 250 ;
-  mas4aiDEMO:hasWidth 50 ;
-  mas4aiDEMO:ControlledBy mas4aiDEMO:Software1 ;
-  mas4aiDEMO:hasJoint mas4aiDEMO:Joint1 ;
-  mas4aiDEMO:usesTool mas4aiDEMO:Tool1 .
-
-mas4aiDEMO:Software1 a mas4aiDEMO:Software ;
-  mas4aiDEMO:hasVersionNumber 1 .
-
-mas4aiDEMO:Joint1 a mas4aiDEMO:Joint ;
-  mas4aiDEMO:hasMaxSpeed "7"^^xsd:decimal ;
-  mas4aiDEMO:hasRange "180"^^xsd:decimal .
-
-mas4aiDEMO:Tool1 a mas4aiDEMO:Tool ;
-  mas4aiDEMO:manualLocation "https://www.mas4ai.eu/publications/"^^xsd:anyURI ;
-  mas4aiDEMO:hasWeight 2 .

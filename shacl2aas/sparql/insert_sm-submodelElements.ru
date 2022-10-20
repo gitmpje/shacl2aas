@@ -5,7 +5,7 @@ INSERT {
 }
 WHERE {
   {
-    # Properties
+    # Datatype properties
     ?Submodel a aas:Submodel ;
       prov:wasDerivedFrom ?NodeShape .
 
@@ -23,7 +23,7 @@ WHERE {
     MINUS {
       ?Submodel a aas:Submodel .
 
-      # Only if the submodel is derived from a cardinality >1 property
+      # Only if the submodel is derived from a not cardinality one property
       FILTER NOT EXISTS { ?Submodel prov:wasDerivedFrom/sh:maxCount 1 }
 
       # Only if the submodel is not derived from an AAS node
@@ -39,8 +39,14 @@ WHERE {
       prov:wasDerivedFrom ?PropertyShape .
 
     ?NodeShape sh:property ?PropertyShape .
+
+    # The element should not be derived from a NodeShape, unless it is a cardinality one property
+    FILTER ( 
+      NOT EXISTS { ?SubmodelElement prov:wasDerivedFrom/a sh:NodeShape } ||
+      EXISTS { ?PropertyShape sh:maxCount 1 }
+    )
   } UNION {
-    # Cardinality >1 (object) properties
+    # Non cardinality one object properties
     ?Submodel a aas:Submodel ;
       prov:wasDerivedFrom ?NodeShape, ?PropertyShape .
 

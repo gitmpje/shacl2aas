@@ -12,22 +12,35 @@ WHERE {
   { SELECT
       ?Object
       (CONCAT(?propertyLabel, "__", ?nodeLabel) as ?_idShort)
-      (IF(bound(?NodeShape), ?NodeShape, ?_PropertyShape) as ?SourceShape)
+      (COALESCE(?NodeShape, ?_PropertyShape) as ?SourceShape)
       (IF(BOUND(?_PropertyShape), ?_PropertyShape, BNODE()) AS ?PropertyShape)
     WHERE {
-        ?Object a/rdfs:subClassOf* aas:Referable ;
+      {
+        ?Object a/rdfs:subClassOf* aas:Referable .
+        FILTER NOT EXISTS { ?Object a aas:ReferenceElement }
+        OPTIONAL {
+          ?Object aassem:semanticId/aasref:keys/aaskey:value ?Property .
+          ?_PropertyShape a sh:PropertyShape ;
+            rdfs:label ?propertyLabel ;
+            sh:path ?Property .
+        }
         OPTIONAL {
           ?Object aassem:semanticId/aasref:keys/aaskey:value ?Class .
           ?NodeShape a sh:NodeShape ;
             rdfs:label ?nodeLabel ;
             sh:targetClass ?Class .
         }
-        OPTIONAL {
-          ?Object aassem:semanticId/aasref:keys/aaskey:value ?property .
-          ?_PropertyShape a sh:PropertyShape ;
-            rdfs:label ?propertyLabel ;
-            sh:path ?property .
-        }
+      } UNION {
+        # In case of a Reference Element, always use both the property and class label in the idShort
+        ?Object a aas:ReferenceElement ;
+          prov:wasDerivedFrom ?_PropertyShape , ?NodeShape .
+        
+        ?_PropertyShape a sh:PropertyShape ;
+          rdfs:label ?propertyLabel .
+
+        ?NodeShape a sh:NodeShape ;
+          rdfs:label ?nodeLabel .
+      }
   } }
 
   ?Object prov:wasDerivedFrom ?SourceShape .
@@ -44,9 +57,8 @@ WHERE {
   BIND (
     IF(
       EXISTS {
-        ?Object prov:wasDerivedFrom ?NodeShape , ?PropertyShape ;
-          (aassm:submodelElements|aassmc:value)/prov:wasDerivedFrom ?NodeShape , ?PropertyShape .
-        ?NodeShape a sh:NodeShape .
+        ?Object prov:wasDerivedFrom ?PropertyShape ;
+          (aassm:submodelElements|aassmc:value)/prov:wasDerivedFrom ?PropertyShape .
         ?PropertyShape a sh:PropertyShape .
       } &&
       NOT EXISTS { ?PropertyShape sh:maxCount 1 },

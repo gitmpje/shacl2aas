@@ -78,7 +78,7 @@ def construct_aas(g_in: Graph, g_in_path: str, debug: Boolean):
     add_prefixes(dataset)
     g_out.parse(data=g_shacl.query(construct_smc_non_aas_class).graph.serialize())
     add_prefixes(dataset)
-    g_out.parse(data=g_shacl.query(construct_smc_cardinality_datatype_prop).graph.serialize())
+    g_out.parse(data=g_shacl.query(construct_smc_cardinality_prop).graph.serialize())
     add_prefixes(dataset)
     g_out.parse(data=g_shacl.query(construct_submodel).graph.serialize())
     add_prefixes(dataset)

@@ -23,7 +23,8 @@ WHERE {
     ?PropertyShape a sh:PropertyShape .
     FILTER NOT EXISTS { ?PropertyShape sh:maxCount [] }
   }
-  FILTER NOT EXISTS { ?PropertyShape sh:class [] } #filter out reference (object) properties
+
+  ?PropertyShape sh:path ?Property .
 
   BIND(iri(concat( "http://mas4ai.eu/id/smc/template/", struuid() )) as ?SMC_iri)
 }

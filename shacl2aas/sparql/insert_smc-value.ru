@@ -15,11 +15,19 @@ WHERE {
 
     ?Value a ?SubmodelElementType ;
       prov:wasDerivedFrom ?PropertyShape .
+
+    # The value object should not be derived from a NodeShape, unless it is a cardinality one property
+    FILTER ( 
+      NOT EXISTS { ?Value prov:wasDerivedFrom/a sh:NodeShape } ||
+      EXISTS { ?PropertyShape sh:maxCount 1 }
+    )
   } UNION {
-    # Cardinality>1 (datatype) properties
+    # Non cardinality one properties
     ?SMC a aas:SubmodelElementCollection ;
       prov:wasDerivedFrom ?PropertyShape .
     FILTER NOT EXISTS { ?SMC prov:wasDerivedFrom/a sh:NodeShape }
+
+    ?PropertyShape a sh:PropertyShape .
 
     ?Value a ?SubmodelElementType ;
       prov:wasDerivedFrom ?PropertyShape .
