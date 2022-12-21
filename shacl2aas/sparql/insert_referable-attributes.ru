@@ -8,52 +8,37 @@ INSERT {
   }
 }
 WHERE {
-  # Join Property and Class label
-  { SELECT
-      ?Object
-      (CONCAT(?propertyLabel, "__", ?nodeLabel) as ?_idShort)
-      (COALESCE(?NodeShape, ?_PropertyShape) as ?SourceShape)
-      (IF(BOUND(?_PropertyShape), ?_PropertyShape, BNODE()) AS ?PropertyShape)
-    WHERE {
-      {
-        ?Object a/rdfs:subClassOf* aas:Referable .
-        FILTER NOT EXISTS { ?Object a aas:ReferenceElement }
-        OPTIONAL {
-          ?Object aassem:semanticId/aasref:keys/aaskey:value ?Property .
-          ?_PropertyShape a sh:PropertyShape ;
-            rdfs:label ?propertyLabel ;
-            sh:path ?Property .
-        }
-        OPTIONAL {
-          ?Object aassem:semanticId/aasref:keys/aaskey:value ?Class .
-          ?NodeShape a sh:NodeShape ;
-            rdfs:label ?nodeLabel ;
-            sh:targetClass ?Class .
-        }
-      } UNION {
-        # In case of a Reference Element, always use both the property and class label in the idShort
-        ?Object a aas:ReferenceElement ;
-          prov:wasDerivedFrom ?_PropertyShape , ?NodeShape .
-        
-        ?_PropertyShape a sh:PropertyShape ;
-          rdfs:label ?propertyLabel .
+  ?Object a/rdfs:subClassOf* aas:Referable .
 
-        ?NodeShape a sh:NodeShape ;
-          rdfs:label ?nodeLabel .
-      }
-  } }
+  { SELECT DISTINCT ?Object (GROUP_CONCAT(DISTINCT ?shapeLabel) as ?_idShort) {
+    {
+      # In case of a Reference Element, always use both the Property and Node Shape label in the idShort
+      ?Object a aas:ReferenceElement ;
+        prov:wasDerivedFrom ?Shape .
 
-  ?Object prov:wasDerivedFrom ?SourceShape .
-  ?SourceShape rdfs:label ?label .
-  OPTIONAL {
-    ?SourceShape rdfs:label ?label_en .
-    FILTER(lang(?label_en)='en')
-  }
+      OPTIONAL { ?Shape rdfs:label ?_shapeLabel }
+    } UNION {
+      # Get idShort from semanticId both Node and Property Shape labels
+      ?Object aassem:semanticId/aasref:keys/aaskey:value/^(sh:targetClass|sh:path) ?Shape ;
+        prov:wasDerivedFrom ?Shape .
+      OPTIONAL { ?Shape rdfs:label ?_shapeLabel }
 
-  BIND ( REPLACE(str(?SourceShape), ".+[//#]([a-z0-9_]+)$", "$1") as ?noLabel)
-  BIND ( REPLACE(COALESCE(?_idShort, ?label_en, ?label, ?noLabel), "[-//(), ]", "_") AS ?_idShort )
+      FILTER NOT EXISTS { ?Object a aas:ReferenceElement }
+    } UNION {
+      # Get idShort from derived from Shape if there is no semanticId
+      ?Object prov:wasDerivedFrom ?Shape .
+      OPTIONAL { ?Shape rdfs:label ?_shapeLabel }
+
+      FILTER NOT EXISTS { ?Object aassem:semanticId [] }      
+    }
+
+    # Prefer English labels to be used for idShort
+    FILTER(lang(?_shapeLabel)="en" || lang(?_shapeLabel)="")
+    BIND ( COALESCE(?_shapeLabel, REPLACE(str(?Shape), ".+[//#]([a-zA-Z0-9_-]+)$", "$1")) as ?shapeLabel )
+  } GROUP BY ?Object }
 
   # Plural idShort on Submodel or SMC of not cardinality one properties
+  BIND ( REPLACE(?_idShort, "[-//(), ]", "_") AS ?__idShort )
   BIND (
     IF(
       EXISTS {
@@ -62,20 +47,25 @@ WHERE {
         ?PropertyShape a sh:PropertyShape .
       } &&
       NOT EXISTS { ?PropertyShape sh:maxCount 1 },
-      CONCAT(?_idShort, "s"),
-      ?_idShort
+      CONCAT(?__idShort, "s"),
+      ?__idShort
     ) AS ?idShort
   )
 
-  OPTIONAL {
-    ?SourceShape rdfs:comment ?comment .
-    # If comment has no language tag, add default "en" tag
-    BIND ( IF(langMatches( lang(?comment), "*" ), ?comment, STRLANG(?comment, "en")) AS ?description )
-  }
+  # Get other attributes from derived from one of the Shapes
+  { SELECT DISTINCT ?Object (SAMPLE(?_description) AS ?description) (SAMPLE(?__displayName) AS ?displayName) {
+    ?Object aassem:semanticId/aasref:keys/aaskey:value/^(sh:targetClass|sh:path) ?SourceShape .
 
-  OPTIONAL {
-    ?SourceShape skos:prefLabel ?prefLabel .
-    OPTIONAL { ?Object aasrefer:displayName ?_displayName }
-    BIND ( COALESCE(?_displayName, ?prefLabel) AS ?displayName )
-  }
+    OPTIONAL {
+      ?SourceShape rdfs:comment ?comment .
+      # If comment has no language tag, add default "en" tag
+      BIND ( IF(langMatches( lang(?comment), "*" ), ?comment, STRLANG(?comment, "en")) AS ?_description )
+    }
+
+    OPTIONAL {
+      ?SourceShape skos:prefLabel ?prefLabel .
+      OPTIONAL { ?Object aasrefer:displayName ?_displayName }
+      BIND ( COALESCE(?_displayName, ?prefLabel) AS ?__displayName )
+    }
+  } GROUP BY ?Object }
 }
