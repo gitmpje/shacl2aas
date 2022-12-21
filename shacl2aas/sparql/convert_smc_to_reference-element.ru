@@ -31,10 +31,8 @@ WHERE {
     ?PropertyShape a sh:PropertyShape .
   }
 
-  # Find the SMC that is the entry point of the circular reference, and its parent SMC
-  FILTER EXISTS {
-    ?SMC aassmc:value+ ?SMC .
-  }
+  # SMC should be in a circular reference
+  FILTER EXISTS { ?SMC aassmc:value+ ?SMC }
 
   BIND(iri(concat( "http://mas4ai.eu/id/referenceElement/template/", struuid() )) as ?ReferenceElement_iri)
 }

@@ -52,7 +52,7 @@ WHERE {
     ) AS ?idShort
   )
 
-  # Get other attributes from derived from one of the Shapes
+  # Get other attributes from a (derived from) Shape
   { SELECT DISTINCT ?Object (SAMPLE(?_description) AS ?description) (SAMPLE(?__displayName) AS ?displayName) {
     ?Object aassem:semanticId/aasref:keys/aaskey:value/^(sh:targetClass|sh:path) ?SourceShape .
 
