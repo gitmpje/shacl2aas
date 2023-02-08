@@ -117,6 +117,8 @@ def construct_aas(g_in: Graph, g_in_path: str, debug: Boolean):
     if debug: g_out.serialize(os.path.join(LOGS_DIR, "insert_haskind.ttl"))
     g_conj.update(insert_additional_semantic_refs)
     if debug: g_out.serialize(os.path.join(LOGS_DIR, "insert_additional_semantic_refs.ttl"))
+    g_conj.update(insert_identifiable_attributes)
+    if debug: g_out.serialize(os.path.join(LOGS_DIR, "insert_identifiable_attributes.ttl"))
     g_conj.update(insert_referable_attributes)
     if debug: g_out.serialize(os.path.join(LOGS_DIR, "insert_referable_attributes.ttl"))
 
