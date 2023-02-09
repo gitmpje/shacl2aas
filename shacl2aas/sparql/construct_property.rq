@@ -1,13 +1,14 @@
 CONSTRUCT {
   # Property
   ?Property_iri a aas:Property ;
-    aasprop:valueType ?datatype ;
+    aasprop:valueType ?aas_datatype ;
     aassem:semanticId [
       a aas:Reference ;
+      aasref:type aasreft:GlobalReference ;
       aasref:keys [
         a aas:Key ;
-        aaskey:idType aaskeyt:Iri ;
-        aaskey:value ?Property ;
+        aaskey:type aaskeyt:GlobalReference ;
+        aaskey:value ?PropertyStr ;
       ] ;
     ] ;
     prov:wasDerivedFrom ?PropertyShape ;
@@ -23,5 +24,8 @@ WHERE {
   FILTER(?datatype != rdf:langString) #filter out multi-language properties
   FILTER NOT EXISTS { ?PropertyShape sh:class [] } #filter out reference (object) properties
 
-  BIND(iri(concat( "http://mas4ai.eu/id/property/template/", struuid() )) as ?Property_iri)
+  BIND(strdt(str(?Property), xsd:string) AS ?PropertyStr)
+  BIND(strafter(str(?datatype), str(xsd:)) AS ?datatypeName)
+  BIND(iri(concat(str(aasdt:), ucase(substr(?datatypeName, 1, 1)), substr(?datatypeName, 2))) AS ?aas_datatype)
+  BIND(iri(concat( "http://mas4ai.eu/id/property/template/", struuid() )) AS ?Property_iri)
 }

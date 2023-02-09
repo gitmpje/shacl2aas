@@ -6,5 +6,5 @@ INSERT {
 WHERE {
   ?Object a/rdfs:subClassOf* aas:Identifiable .
 
-  BIND(STRDT(STR(?Object), xsd:string) AS ?id)
+  BIND(strdt(str(?Object), xsd:string) AS ?id)
 }

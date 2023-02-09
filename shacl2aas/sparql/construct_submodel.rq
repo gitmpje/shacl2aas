@@ -3,10 +3,11 @@ CONSTRUCT {
   ?SM_iri a aas:Submodel ;
     aassem:semanticId [
       a aas:Reference ;
+      aasref:type aasreft:GlobalReference ;
       aasref:keys [
         a aas:Key ;
-        aaskey:idType aaskeyt:Iri ;
-        aaskey:value ?SemanticId ;
+        aaskey:type aaskeyt:GlobalReference ;
+        aaskey:value ?SemanticIdStr ;
       ] ;
     ] ;
     prov:wasDerivedFrom ?NodeShape, ?PropertyShape ;
@@ -28,4 +29,5 @@ WHERE {
 
   BIND(iri(concat( "http://mas4ai.eu/id/sm/template/", struuid() )) as ?SM_iri)
   BIND(COALESCE(?Property, ?Class) AS ?SemanticId)
+  BIND(strdt(str(?SemanticId), xsd:string) AS ?SemanticIdStr)
 }

@@ -3,9 +3,10 @@ CONSTRUCT {
   ?ReferenceElement_iri a aas:ReferenceElement ;
     aassem:semanticId [
       a aas:Reference ;
+      aasref:type aasreft:GlobalReference ;
       aasref:keys [
         a aas:Key ;
-        aaskey:idType aaskeyt:Iri ;
+        aaskey:type aaskeyt:GlobalReference ;
         aaskey:value ?ReferenceElement ;
       ] ;
     ] ;
@@ -21,5 +22,6 @@ WHERE {
 
   FILTER EXISTS { ?Class ^sh:targetClass/mas4ai:hasInterface [] } #otherwise it should be a Submodel or SMC
 
+  BIND(strdt(str(?ReferenceElement), xsd:string) AS ?ReferenceElementStr)
   BIND(iri(concat( "http://mas4ai.eu/id/referenceElement/template/", struuid() )) as ?ReferenceElement_iri)
 }

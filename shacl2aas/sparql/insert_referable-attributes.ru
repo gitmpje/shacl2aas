@@ -53,7 +53,7 @@ WHERE {
   )
 
   # Get other attributes from a (derived from) Shape
-  { SELECT DISTINCT ?Object (SAMPLE(?_description) AS ?description) (SAMPLE(?__displayName) AS ?displayName) {
+  { SELECT DISTINCT ?Object (SAMPLE(?_description) AS ?description) (SAMPLE(?displayName_lang) AS ?displayName) {
     ?Object aassem:semanticId/aasref:keys/aaskey:value/^(sh:targetClass|sh:path) ?SourceShape .
 
     OPTIONAL {
@@ -66,6 +66,10 @@ WHERE {
       ?SourceShape skos:prefLabel ?prefLabel .
       OPTIONAL { ?Object aasrefer:displayName ?_displayName }
       BIND ( COALESCE(?_displayName, ?prefLabel) AS ?__displayName )
+      # If displayName has no language tag, add default "en" tag
+      BIND ( IF(langMatches( lang(?__displayName), "*" ), ?__displayName, STRLANG(?__displayName, "en")) AS ?displayName_lang )
+
     }
+
   } GROUP BY ?Object }
 }

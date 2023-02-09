@@ -3,10 +3,11 @@ CONSTRUCT {
   ?SMC_iri a aas:SubmodelElementCollection ;
     aassem:semanticId [
       a aas:Reference ;
+      aasref:type aasreft:GlobalReference ;
       aasref:keys [
         a aas:Key ;
-        aaskey:idType aaskeyt:Iri ;
-        aaskey:value ?Class ;
+        aaskey:type aaskeyt:GlobalReference ;
+        aaskey:value ?ClassStr ;
       ] ;
     ] ;
     prov:wasDerivedFrom ?PropertyShape, ?NodeShape ;
@@ -28,5 +29,6 @@ WHERE {
     ?PropertyShape sh:maxCount 1 .
   }
 
+  BIND(strdt(str(?Class), xsd:string) AS ?ClassStr)
   BIND(iri(concat( "http://mas4ai.eu/id/smc/template/", struuid() )) as ?SMC_iri)
 }

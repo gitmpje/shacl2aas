@@ -7,14 +7,17 @@ CONSTRUCT {
   .
 
   ?Asset_iri a aas:AssetInformation ;
+    assetinf:assetKind assetkind:Type ;
     assetinf:globalAssetId [
       a aas:Reference ;
+      aasref:type aasreft:GlobalReference ;
       aasref:referredSemanticId [
         a aas:Reference ;
+        aasref:type aasreft:GlobalReference ;
         aasref:keys [
           a aas:Key ;
-          aaskey:idType aaskeyt:Iri ;
-          aaskey:value ?AssetClass ;
+          aaskey:type aaskeyt:GlobalReference ;
+          aaskey:value ?AssetClassStr ;
         ]
       ]
     ]
@@ -24,6 +27,7 @@ WHERE {
   ?AASNode mas4ai:hasInterface [] ;
     sh:targetClass ?AssetClass .
 
+  BIND(strdt(str(?AssetClass), xsd:string) AS ?AssetClassStr)
   BIND(iri(concat( "http://mas4ai.eu/id/aas/template/", struuid() )) as ?AAS_iri)
   BIND(iri(concat( "http://mas4ai.eu/id/asset/template/", struuid() )) as ?Asset_iri)
 }
