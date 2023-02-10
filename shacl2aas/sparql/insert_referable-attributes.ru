@@ -57,26 +57,28 @@ WHERE {
   )
 
   # Get other attributes from a (derived from) Shape
-  { SELECT DISTINCT ?Object (SAMPLE(?_description) AS ?description) (SAMPLE(?displayName_lang) AS ?displayName) {
-    ?Object aassem:semanticId/aasref:keys/aaskey:value ?semanticId .
+  OPTIONAL {
+    ?Object a/rdfs:subClassOf* aas:Referable .
 
-    BIND(IRI(?semanticId) AS ?ResourceIri)
-    ?ResourceIri ^(sh:targetClass|sh:path) ?SourceShape .
+    { SELECT DISTINCT ?Object (SAMPLE(?_description) AS ?description) (SAMPLE(?displayName_lang) AS ?displayName) {
+      ?Object aassem:semanticId/aasref:keys/aaskey:value ?semanticId .
 
-    OPTIONAL {
-      ?SourceShape rdfs:comment ?comment .
-      # If comment has no language tag, add default "en" tag
-      BIND ( IF(langMatches( lang(?comment), "*" ), ?comment, STRLANG(?comment, "en")) AS ?_description )
-    }
+      BIND(IRI(?semanticId) AS ?ResourceIri)
+      ?ResourceIri ^(sh:targetClass|sh:path) ?SourceShape .
 
-    OPTIONAL {
-      ?SourceShape skos:prefLabel ?prefLabel .
-      OPTIONAL { ?Object aasrefer:displayName ?_displayName }
-      BIND ( COALESCE(?_displayName, ?prefLabel) AS ?__displayName )
-      # If displayName has no language tag, add default "en" tag
-      BIND ( IF(langMatches( lang(?__displayName), "*" ), ?__displayName, STRLANG(?__displayName, "en")) AS ?displayName_lang )
+      OPTIONAL {
+        ?SourceShape rdfs:comment ?comment .
+        # If comment has no language tag, add default "en" tag
+        BIND ( IF(langMatches( lang(?comment), "*" ), ?comment, STRLANG(?comment, "en")) AS ?_description )
+      }
 
-    }
-
-  } GROUP BY ?Object }
+      OPTIONAL {
+        ?SourceShape skos:prefLabel ?prefLabel .
+        OPTIONAL { ?Object aasrefer:displayName ?_displayName }
+        BIND ( COALESCE(?_displayName, ?prefLabel) AS ?__displayName )
+        # If displayName has no language tag, add default "en" tag
+        BIND ( IF(langMatches( lang(?__displayName), "*" ), ?__displayName, STRLANG(?__displayName, "en")) AS ?displayName_lang )
+      }
+    } GROUP BY ?Object }
+  }
 }
