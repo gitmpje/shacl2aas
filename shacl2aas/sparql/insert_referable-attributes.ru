@@ -19,8 +19,12 @@ WHERE {
       OPTIONAL { ?Shape rdfs:label ?_shapeLabel }
     } UNION {
       # Get idShort from semanticId both Node and Property Shape labels
-      ?Object aassem:semanticId/aasref:keys/aaskey:value/^(sh:targetClass|sh:path) ?Shape ;
+      ?Object aassem:semanticId/aasref:keys/aaskey:value ?semanticId ;
         prov:wasDerivedFrom ?Shape .
+
+      BIND(IRI(?semanticId) AS ?ResourceIri)
+      ?ResourceIri ^(sh:targetClass|sh:path) ?Shape .
+        
       OPTIONAL { ?Shape rdfs:label ?_shapeLabel }
 
       FILTER NOT EXISTS { ?Object a aas:ReferenceElement }
@@ -54,7 +58,10 @@ WHERE {
 
   # Get other attributes from a (derived from) Shape
   { SELECT DISTINCT ?Object (SAMPLE(?_description) AS ?description) (SAMPLE(?displayName_lang) AS ?displayName) {
-    ?Object aassem:semanticId/aasref:keys/aaskey:value/^(sh:targetClass|sh:path) ?SourceShape .
+    ?Object aassem:semanticId/aasref:keys/aaskey:value ?semanticId .
+
+    BIND(IRI(?semanticId) AS ?ResourceIri)
+    ?ResourceIri ^(sh:targetClass|sh:path) ?SourceShape .
 
     OPTIONAL {
       ?SourceShape rdfs:comment ?comment .

@@ -1,5 +1,6 @@
 PREFIX prov:        <http://www.w3.org/ns/prov#>
 PREFIX skos:        <http://www.w3.org/2004/02/skos/core#>
+PREFIX xsd:         <http://www.w3.org/2001/XMLSchema#>
 PREFIX mas4ai:      <http://example.org/MAS4AI_GenericModel#>
 PREFIX aas:         <https://admin-shell.io/aas/3/0/RC02/>
 PREFIX aasaas:      <https://admin-shell.io/aas/3/0/RC02/AssetAdministrationShell/>
